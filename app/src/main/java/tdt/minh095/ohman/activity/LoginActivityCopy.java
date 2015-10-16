@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import tdt.minh095.ohman.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivityCopy extends AppCompatActivity {
     AppCompatButton button;
     EditText edPass;
 
@@ -23,16 +23,23 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivityCopy.this, MainActivity.class);
                 startActivity(intent);
             }
         });
         edPass.setTypeface(Typeface.DEFAULT);
     }
-	private int dangnhap(String username, String pass){
-		return 1;
-	}
-	private int dangnhap1(String username, String pass){
-		return 1;
-	}
+
+
+    private int tenkhac(String username, String pass) {
+        return 1;
+    }
+
+    private int dangnhap(String username, String pass) {
+        return 1;
+    }
+
+    private int dangnhap1(String username, String pass) {
+        return 1;
+    }
 }

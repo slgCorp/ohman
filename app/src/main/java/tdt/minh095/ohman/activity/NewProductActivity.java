@@ -5,6 +5,10 @@ package tdt.minh095.ohman.activity;
  */
 public class NewProductActivity {
     public int pheptru(int a, int b) {
-        return a + b;
+        return a + b + b;
+    }
+
+    public int phepnhan(int a, int b) {
+        return a * b;
     }
 }
