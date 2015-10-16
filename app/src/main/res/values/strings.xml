@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">OhMan</string>
+    <string-array name="quan">
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Quận 4</item>
+        <item>Quận 5</item>
+        <item>Quận 6</item>
+        <item>Quận 7</item>
+        <item>Quận 8</item>
+    </string-array>
+    <string-array name="thanhpho">
+        <item>TP.HCM</item>
+        <item>Ha Noi</item>
+        <item>Hai Phong</item>
+        <item>Ba Ria - Vung Tau</item>
+        <item>An Giang</item>
+        <item>Nha Trang</item>
+    </string-array>
+    <string-array name="sanpham">
+        <item>Nón</item>
+        <item>Giày</item>
+        <item>Balo</item>
+    </string-array>
+    <string-array name="nhomkhach">
+        <item>Bình thường</item>
+        <item>Quen</item>
+        <item>V.I.P 1asdasdasdasdasd</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+        <item>V.I.P 1</item>
+        <item>V.I.P 2</item>
+        <item>V.I.P 3</item>
+    </string-array>
+    <string name="title_account">Tài khoản</string>
+    <string name="title_system">Hệ thống</string>
+
+    <string name="navigation_change_password">Đổi mật khẩu</string>
+    <string name="navigation_logout">Đăng xuất</string>
+
+    <string name="navigation_passcode">Mã bảo vệ</string>
+    <string name="navigation_language">Ngôn ngữ</string>
+    <string name="navigation_notification">Thông báo</string>
+    <string name="navigation_rate">Đánh giá ứng dụng</string>
+    <string name="navigation_feedback">Góp ý nhà phát triển</string>
+    <string name="navigation_about">Giới thiệu</string>
+    <string name="navigation_help">Trợ giúp</string>
+
+    <string name="account">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+
+    <string name="forgot_password">Quên mật khẩu ?</string>
+
+
+    <string name="name">Họ tên</string>
+    <string name="user_login">Tên đăng nhập</string>
+    <string name="email_login">Email</string>
+    <string name="title_activity_test">Test</string>
+
+    <string name="tab_shop">Cửa hàng</string>
+    <string name="tab_customer">Khách hàng</string>
+    <string name="tab_product">Sản phẩm</string>
+    <string name="tab_history">Lịch sử buôn bán</string>
+</resources>

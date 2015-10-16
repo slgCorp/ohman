@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="footer_customer">40dp</dimen>
+
+    <dimen name="footer_shop">50dp</dimen>
+    <dimen name="header_shop">50dp</dimen>
+
+    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="tab_height">48dp</dimen>
+
+    <dimen name="title_name_customer_height">32dp</dimen>
+    <dimen name="title_name_product_height">32dp</dimen>
+
+    <dimen name="spinner_height">40dp</dimen>
+</resources>
