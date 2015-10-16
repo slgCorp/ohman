@@ -30,7 +30,16 @@ public class LoginActivityCopy extends AppCompatActivity {
         edPass.setTypeface(Typeface.DEFAULT);
     }
 
+
     private int tenkhac(String username, String pass) {
+        return 1;
+    }
+
+    private int dangnhap(String username, String pass) {
+        return 1;
+    }
+
+    private int dangnhap1(String username, String pass) {
         return 1;
     }
 }
