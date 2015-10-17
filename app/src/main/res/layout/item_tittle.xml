@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="30dp"
+    android:layout_height="@dimen/item_title_height"
     android:focusable="true"
     android:orientation="vertical">
 
@@ -9,14 +9,14 @@
         android:id="@+id/tvTitle"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/item_title_text_margin"
         android:textColor="@color/blue500"
-        android:textSize="20dp" />
+        android:textSize="@dimen/item_title_text_size" />
 
     <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="30dp"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/item_title_divider_height"
+        android:layout_marginLeft="@dimen/item_title_divider_margin_left"
+        android:layout_marginRight="@dimen/item_title_divider_margin_right"
         android:background="@color/black"></TextView>
 </LinearLayout>

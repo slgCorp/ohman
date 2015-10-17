@@ -15,4 +15,12 @@
     <dimen name="title_name_product_height">32dp</dimen>
 
     <dimen name="spinner_height">40dp</dimen>
+
+    // layout item_title
+    <dimen name="item_title_height">30dp</dimen>
+    <dimen name="item_title_text_margin">10dp</dimen>
+    <dimen name="item_title_text_size">20sp</dimen>
+    <dimen name="item_title_divider_margin_left">10dp</dimen>
+    <dimen name="item_title_divider_margin_right">30dp</dimen>
+    <dimen name="item_title_divider_height">1dp</dimen>
 </resources>
