@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
 
 
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/spinner_group_customer"
-        style="@android:style/Widget.Holo.Light.Spinner"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spinner_height"
-        android:entries="@array/sanpham"
-        android:gravity="center"></android.support.v7.widget.AppCompatSpinner>
+        android:layout_height="@dimen/sort_height"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <android.support.v7.widget.AppCompatSpinner
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:entries="@array/group_customer" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:entries="@array/sort" />
+    </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/spinner_height"></android.support.v7.widget.RecyclerView>
+        android:layout_marginTop="@dimen/sort_height" />
 
 
     <FrameLayout
@@ -32,18 +44,18 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatButton
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/footer_button_size"
+            android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="@dimen/footer_button_margin"
             android:background="@drawable/ic_delete_white_32"
             android:gravity="right" />
 
         <android.support.v7.widget.AppCompatButton
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/footer_button_size"
+            android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="@dimen/footer_button_margin"
             android:background="@drawable/ic_plus_white_32"
             android:gravity="left" />
     </FrameLayout>
