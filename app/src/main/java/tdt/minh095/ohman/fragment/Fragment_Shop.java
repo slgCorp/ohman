@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.adapter.ShopAdapter;
 import tdt.minh095.ohman.pojo.Shop;
+import tdt.minh095.ohman.pojo.ShopInfo;
 
 /**
  * Created by MyPC on 02/10/2015.
@@ -46,12 +47,12 @@ public class Fragment_Shop extends Fragment {
         ShopAdapter adapter = new ShopAdapter(createData());
         mRecyclerView.setAdapter(adapter);
     }
-    private ArrayList<Shop> createData() {
-        ArrayList<Shop> listShop = new ArrayList<Shop>();
-        listShop.add(new Shop("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new Shop("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new Shop("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new Shop("MinhMinh", "tp hcm", " 0903759394"));
+    private ArrayList<ShopInfo> createData() {
+        ArrayList<ShopInfo> listShop = new ArrayList<>();
+        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
+        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
+        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
+        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
         return listShop;
     }
 

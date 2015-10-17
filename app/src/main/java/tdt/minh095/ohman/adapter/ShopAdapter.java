@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tdt.minh095.ohman.R;
-import tdt.minh095.ohman.pojo.Shop;
+import tdt.minh095.ohman.pojo.ShopInfo;
 
 
 /**
@@ -17,9 +17,9 @@ import tdt.minh095.ohman.pojo.Shop;
  */
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ContactViewHolder> {
 
-    private ArrayList<Shop> shopList;
+    private ArrayList<ShopInfo> shopList;
 
-    public ShopAdapter(ArrayList<Shop> shopList) {
+    public ShopAdapter(ArrayList<ShopInfo> shopList) {
         this.shopList = shopList;
     }
 
@@ -30,10 +30,10 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ContactViewHol
 
     @Override
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
-        Shop shop = shopList.get(i);
-        contactViewHolder.shopName.setText(shop.getShopName());
-        contactViewHolder.shopAdress.setText(shop.getShopAdress());
-        contactViewHolder.shopPhone.setText(shop.getShopPhone());
+        ShopInfo shopInfo = shopList.get(i);
+        contactViewHolder.shopName.setText(shopInfo.getShopName());
+        contactViewHolder.shopAdress.setText(shopInfo.getShopAdress());
+        contactViewHolder.shopPhone.setText(shopInfo.getShopPhone());
     }
 
     @Override

@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#2196F3</color>
-    <color name="primary_dark">#1565C0</color>
-    <color name="accent">#FF1744</color>
+    <color name="cyan">#33b5e5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- sample color-->
+    <color name="primary">#9C27B0</color>
+    <color name="primary_dark">#7B1FA2</color>
+    <color name="primary_light">#E1BEE7</color>
+    <color name="primary_text">#212121</color>
+
+    <!-- color using in login screen -->
+    <color name="button_login_pressed">#BA68C8</color>
+    <color name="button_sign_up_pressed">#D6A8DE</color>
+    <color name="button_facebook_pressed">#6C84B4</color>
+    <color name="button_google_pressed">#F86D5C</color>
+
+    <color name="light_blue">#03A9F4</color>
 
     <item name="blue100" type="color">#BBDEFB</item>
     <item name="blue200" type="color">#90CAF9</item>
@@ -37,7 +52,5 @@
 
     <color name="transparent_blue_false">#B32196F3</color>
     <color name="transparent_blue_true">#CC2196F3</color>
-
-
 
 </resources>
