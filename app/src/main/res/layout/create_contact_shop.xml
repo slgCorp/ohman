@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_create_customer_text_info_marginBottom"
+        android:layout_marginLeft="@dimen/activity_create_customer_text_info_marginLeft"
+        android:layout_marginStart="@dimen/activity_create_customer_text_info_marginLeft"
+        android:text="@string/information_contact"
+        android:textSize="@dimen/activity_create_customer_text_info_size" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="@dimen/activity_create_customer_card_paddingRight"
+        android:paddingLeft="@dimen/activity_create_customer_card_paddingLeft"
+        android:paddingRight="@dimen/activity_create_customer_card_paddingRight"
+        android:paddingStart="@dimen/activity_create_customer_card_paddingLeft">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_create_margin_between_control"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city"
+                    android:textSize="@dimen/activity_create_hint_size" />
+
+
+                <android.support.v7.widget.AppCompatSpinner
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/city" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_create_margin_between_control"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/district"
+                    android:textSize="@dimen/activity_create_hint_size" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:entries="@array/district" />
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_create_edit_marginBottom"
+                android:layout_marginTop="@dimen/activity_create_edit_marginTop">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address_shop" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_create_edit_marginBottom"
+                android:layout_marginTop="@dimen/activity_create_edit_marginTop">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/shop_phone" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_add_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_create_button_complete_marginTop"
+        android:background="@drawable/selector_button"
+        android:padding="@dimen/activity_create_button_complete_padding"
+        android:text="@string/update"
+        android:textColor="@android:color/white" />
+</LinearLayout>

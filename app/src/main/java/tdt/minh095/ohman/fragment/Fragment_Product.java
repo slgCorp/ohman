@@ -28,7 +28,6 @@ import tdt.minh095.ohman.view.DividerItemDecoration;
 public class Fragment_Product extends Fragment {
     RecyclerView recyclerViewProduct;
     FrameLayout footerProduct;
-    AppCompatSpinner spinnerProduct;
 
     @Nullable
     @Override
@@ -36,7 +35,6 @@ public class Fragment_Product extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_product, container, false);
         recyclerViewProduct = (RecyclerView) rootView.findViewById(R.id.list_product);
         footerProduct = (FrameLayout) rootView.findViewById(R.id.footer_product);
-        spinnerProduct = (AppCompatSpinner) rootView.findViewById(R.id.spinner_group_customer);
         setUpRecyclerViewProduct();
         return rootView;
     }
@@ -55,13 +53,7 @@ public class Fragment_Product extends Fragment {
                 .isSnappable(true)
                 .build();
         recyclerViewProduct.setOnScrollListener(scrollListener);
-        try {
-            Field popup = AppCompatSpinner.class.getDeclaredField("mPopup");
-            popup.setAccessible(true);
-            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(spinnerProduct);
-            popupWindow.setHeight(100);
-        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
-        }
+
 
     }
 }

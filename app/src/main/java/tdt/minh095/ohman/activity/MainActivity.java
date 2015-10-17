@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpTabViewPager() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
+        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagerTab);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)

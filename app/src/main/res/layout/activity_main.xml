@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue100"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -28,11 +28,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="@dimen/text_size_title_main" />
         </android.support.v7.widget.Toolbar>
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/viewpagertab"
+            android:id="@+id/viewpagerTab"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_height"
             app:elevation="6dp"
