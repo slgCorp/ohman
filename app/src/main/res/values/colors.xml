@@ -28,6 +28,7 @@
     <item name="pink500" type="color">#EC407A</item>
 
     <color name="transparent">#00000000</color>
+    //
     <color name="white_20">#33FFFFFF</color>
     <item name="white" type="color">#FFFFFF</item>
     <item name="black" type="color">#000000</item>
