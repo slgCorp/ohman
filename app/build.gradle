@@ -43,4 +43,6 @@ dependencies {
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.google.android.gms:play-services-identity:8.1.0'
     compile 'com.google.android.gms:play-services-plus:8.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
