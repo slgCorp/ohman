@@ -19,9 +19,9 @@
     <dimen name="text_size_title_main">20sp</dimen>
 
     // layout item_title
-    <dimen name="item_title_height">30dp</dimen>
+    <dimen name="item_title_height">24dp</dimen>
     <dimen name="item_title_text_margin">10dp</dimen>
-    <dimen name="item_title_text_size">20sp</dimen>
+    <dimen name="item_title_text_size">16sp</dimen>
     <dimen name="item_title_divider_margin_left">10dp</dimen>
     <dimen name="item_title_divider_margin_right">30dp</dimen>
     <dimen name="item_title_divider_height">1dp</dimen>
@@ -61,4 +61,8 @@
     <dimen name="activity_create_button_complete_marginTop">8dp</dimen>
     <dimen name="activity_create_button_complete_padding">12dp</dimen>
     <dimen name="activity_create_margin_between_control">8dp</dimen>
+    <dimen name="image_profile_height">104dp</dimen>
+    <dimen name="item_navigation_image_marginLeft">16dp</dimen>
+    <dimen name="item_image_size">20dp</dimen>
+    <dimen name="item_navigation_text_marginLeft">66dp</dimen>
 </resources>

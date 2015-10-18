@@ -6,19 +6,12 @@
     android:orientation="vertical">
 
     <TextView
+        android:alpha="0.9"
         android:id="@+id/tvTitle"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="@dimen/item_title_text_margin"
-        android:textColor="@color/blue500"
+        android:textColor="@color/black"
         android:textSize="@dimen/item_title_text_size" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_title_divider_height"
-        android:layout_marginEnd="@dimen/item_title_divider_margin_right"
-        android:layout_marginLeft="@dimen/item_title_divider_margin_left"
-        android:layout_marginRight="@dimen/item_title_divider_margin_right"
-        android:layout_marginStart="@dimen/item_title_divider_margin_left"
-        android:background="@color/black" />
 </LinearLayout>

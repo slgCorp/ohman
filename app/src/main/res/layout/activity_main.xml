@@ -3,7 +3,6 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue100"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -15,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/primary"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:elevation="6dp"
@@ -38,6 +37,7 @@
             app:elevation="6dp"
             app:stl_distributeEvenly="true"
             app:stl_dividerColor="@color/transparent"
+            android:background="@color/primary"
             app:stl_dividerThickness="0dp"
             app:stl_indicatorColor="@color/transparent"
             app:stl_indicatorThickness="0dp"
