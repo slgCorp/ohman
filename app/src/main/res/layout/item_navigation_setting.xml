@@ -9,23 +9,23 @@
         android:id="@+id/imageIconNavigation"
         android:layout_width="@dimen/item_image_size"
         android:layout_height="@dimen/item_image_size"
-        android:layout_gravity="left|center_vertical"
-        android:layout_marginLeft="@dimen/item_navigation_text_marginLeft"
-        android:src="@drawable/ic_lock" />
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginLeft="@dimen/item_navigation_image_marginLeft"
+        android:layout_marginStart="@dimen/item_navigation_image_marginLeft"
+        android:src="@drawable/ic_lock"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/tvTitleNavigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageIconNavigation"
-        android:layout_marginLeft="@dimen/item_navigation_image_marginLeft"
+        android:layout_marginLeft="@dimen/item_navigation_text_marginLeft"
+        android:layout_marginStart="@dimen/item_navigation_text_marginLeft"
         android:layout_marginTop="2.5dp"
-        android:layout_toEndOf="@+id/imageIconNavigation"
-        android:layout_toRightOf="@+id/iageIconNavigation"
         android:alpha="0.87"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
-        android:text="Khoa tai khoan"
+        android:text="@string/username"
         android:textColor="@color/background_material_dark"
         android:textSize="16sp" />
 
