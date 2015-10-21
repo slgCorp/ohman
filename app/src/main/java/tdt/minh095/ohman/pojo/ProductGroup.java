@@ -3,35 +3,76 @@ package tdt.minh095.ohman.pojo;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
+
 
 @Table(name = "T02_ProductGroup", id = "_id")
 public class ProductGroup extends Model {
+
+    @Column(name = "UID")
+    private long uid;
+
     @Column(name = "Code")
     private String code;
+
     @Column(name = "ShopID")
     private long shopID;
-    @Column(name = "ProductName")
-    private String productName;
-    @Column(name = "ProductNameE")
-    private String productNameE;
+
+    @Column(name = "ProductGroupName")
+    private String productGroupName;
+
+    @Column(name = "ProductGroupNameE")
+    private String productGroupNameE;
+
     @Column(name = "SettingID")
     private long settingID;
+
+    @Column(name = "Level")
+    private int level;
+
+    @Column(name = "ParentID")
+    private long parentID;
+
+    @Column(name = "LocalLink")
+    private String localLink;
+
+    @Column(name = "ServerLink")
+    private String serverLink;
+
     @Column(name = "Note")
     private String note;
+
     @Column(name = "Status")
     private boolean status;
+
     @Column(name = "CreatedBy")
     private long createdBy;
+
     @Column(name = "CreatedDateTime")
     private String createdDateTime;
+
     @Column(name = "LastUpdatedBy")
     private long lastUpdatedBy;
+
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
 
+    @Column(name = "IsSync")
+    private boolean isSync;
+
     public ProductGroup() {
         super();
-        this.status = true;
+        status = true;
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     public String getCode() {
@@ -50,20 +91,20 @@ public class ProductGroup extends Model {
         this.shopID = shopID;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getProductGroupName() {
+        return productGroupName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setProductGroupName(String productGroupName) {
+        this.productGroupName = productGroupName;
     }
 
-    public String getProductNameE() {
-        return productNameE;
+    public String getProductGroupNameE() {
+        return productGroupNameE;
     }
 
-    public void setProductNameE(String productNameE) {
-        this.productNameE = productNameE;
+    public void setProductGroupNameE(String productGroupNameE) {
+        this.productGroupNameE = productGroupNameE;
     }
 
     public long getSettingID() {
@@ -72,6 +113,38 @@ public class ProductGroup extends Model {
 
     public void setSettingID(long settingID) {
         this.settingID = settingID;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public long getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(long parentID) {
+        this.parentID = parentID;
+    }
+
+    public String getLocalLink() {
+        return localLink;
+    }
+
+    public void setLocalLink(String localLink) {
+        this.localLink = localLink;
+    }
+
+    public String getServerLink() {
+        return serverLink;
+    }
+
+    public void setServerLink(String serverLink) {
+        this.serverLink = serverLink;
     }
 
     public String getNote() {
@@ -120,5 +193,31 @@ public class ProductGroup extends Model {
 
     public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
+    }
+
+    public boolean isSync() {
+        return isSync;
+    }
+
+    public void setIsSync(boolean isSync) {
+        this.isSync = isSync;
+    }
+
+    public static List<ProductGroup> getAll() {
+        return new Select()
+                .from(ProductGroup.class)
+                .execute();
+    }
+
+    public static boolean checkName(String productGroupName) {
+        String whereClause = "ProductGroupName = '" + productGroupName + "'";
+        ProductGroup productGroup = new Select().from(ProductGroup.class)
+                .where(whereClause)
+                .executeSingle();
+        if (productGroup != null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

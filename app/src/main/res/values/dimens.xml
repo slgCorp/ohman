@@ -65,4 +65,5 @@
     <dimen name="item_navigation_image_marginLeft">16dp</dimen>
     <dimen name="item_image_size">20dp</dimen>
     <dimen name="item_navigation_text_marginLeft">66dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

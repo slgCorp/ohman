@@ -206,5 +206,8 @@
     <string name="address_shop">Số nhà</string>
     <string name="create_info_shop">Thông tin liên lạc</string>
 
+    <string name="title_activity_new_product_group">Nhóm sản phẩm</string>
+    <string name="description_product_group">Ảnh đại diện của nhóm sản phẩm</string>
+
 </resources>
 
