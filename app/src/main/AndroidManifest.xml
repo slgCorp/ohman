@@ -18,10 +18,10 @@
         android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="saladb_2015_10_04" />
+            android:value="saladb" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -36,10 +36,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity android:name=".activity.MainActivity">
-
-        </activity>
-
-        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,14 +43,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.LoginActivity">
+
+        </activity>
+
         <activity android:name=".activity.CreateShopActivity" />
 
         <activity android:name=".activity.CreateCustomerActivity" />
 
         <activity android:name=".activity.RegisterActivity" />
-
-        <activity android:name=".activity.NewProductActivity">
-        </activity>
 
     </application>
 
