@@ -1,37 +1,27 @@
 package tdt.minh095.ohman.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.etiennelawlor.quickreturn.library.enums.QuickReturnViewType;
-import com.etiennelawlor.quickreturn.library.listeners.QuickReturnRecyclerViewOnScrollListener;
-import com.etiennelawlor.quickreturn.library.utils.QuickReturnUtils;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import tdt.minh095.ohman.R;
-import tdt.minh095.ohman.adapter.ShopAdapter;
-import tdt.minh095.ohman.pojo.Shop;
-import tdt.minh095.ohman.pojo.ShopInfo;
 
-/**
- * Created by MyPC on 02/10/2015.
- */
+import tdt.minh095.ohman.R;
+import tdt.minh095.ohman.activity.CreateShopActivity;
+import tdt.minh095.ohman.adapter.ShopAdapter;
+import tdt.minh095.ohman.helper.RecyclerItemClickListener;
+import tdt.minh095.ohman.pojo.Shop;
+
 public class Fragment_Shop extends Fragment {
+
     RecyclerView mRecyclerView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,21 +30,20 @@ public class Fragment_Shop extends Fragment {
         setUpDataShop();
         return rootView;
     }
-    public void setUpDataShop(){
+
+    public void setUpDataShop() {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
-        ShopAdapter adapter = new ShopAdapter(createData());
+        ArrayList<Shop> shops = new ArrayList<>(Shop.getAllShop());
+        ShopAdapter adapter = new ShopAdapter(shops);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getActivity(), CreateShopActivity.class);
+                startActivity(intent);
+            }
+        }));
     }
-    private ArrayList<ShopInfo> createData() {
-        ArrayList<ShopInfo> listShop = new ArrayList<>();
-        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
-        listShop.add(new ShopInfo("MinhMinh", "tp hcm", " 0903759394"));
-        return listShop;
-    }
-
-
 }
