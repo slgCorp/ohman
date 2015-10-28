@@ -3,11 +3,15 @@ package tdt.minh095.ohman.pojo;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
+
+import java.util.List;
 
 @Table(name = "T01_Shop_Industry", id = "_id")
 public class ShopIndustry extends Model {
-    @Column(name = "Code")
-    private String code;
+    @Column(name = "UID")
+    private long uid;
     @Column(name = "ShopID")
     private long shopID;
     @Column(name = "IndustryID")
@@ -24,18 +28,20 @@ public class ShopIndustry extends Model {
     private long lastUpdatedBy;
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
+    @Column(name = "IsSync")
+    private String isSync;
 
     public ShopIndustry() {
         super();
         this.status = true;
     }
 
-    public String getCode() {
-        return code;
+    public long getUid() {
+        return uid;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     public long getShopID() {
@@ -100,5 +106,17 @@ public class ShopIndustry extends Model {
 
     public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
+    }
+
+    public String getIsSync() {
+        return isSync;
+    }
+
+    public void setIsSync(String isSync) {
+        this.isSync = isSync;
+    }
+
+    public static List<ShopIndustry> getList(long shopID) {
+        return new Select().from(ShopIndustry.class).where("ShopID = " + shopID).execute();
     }
 }

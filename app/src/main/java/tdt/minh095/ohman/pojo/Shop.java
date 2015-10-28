@@ -3,15 +3,22 @@ package tdt.minh095.ohman.pojo;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
 
 @Table(name = "T01_Shop", id = "_id")
 public class Shop extends Model {
+    @Column(name = "UID")
+    private long UID;
+    @Column(name = "UserID")
+    private long userID;
     @Column(name = "Code")
     private String code;
     @Column(name = "ShopName")
     private String shopName;
-    @Column(name = "UserID")
-    private long userID;
+    @Column(name = "WorkingTime")
+    private String workingTime;
     @Column(name = "Description")
     private String description;
     @Column(name = "InvoicePrefix")
@@ -29,19 +36,17 @@ public class Shop extends Model {
     @Column(name = "Address")
     private String address;
     @Column(name = "RegionL1")
-    private int regionL1;
+    private long regionL1;
     @Column(name = "RegionL2")
-    private int regionL2;
+    private long regionL2;
     @Column(name = "RegionL3")
-    private int regionL3;
+    private long regionL3;
     @Column(name = "RegionL4")
-    private int regionL4;
+    private long regionL4;
     @Column(name = "RegionL5")
-    private int regionL5;
+    private long regionL5;
     @Column(name = "RegionL6")
-    private int regionL6;
-    @Column(name = "RegionL7")
-    private int regionL7;
+    private long regionL6;
     @Column(name = "Latitude")
     private double latitude;
     @Column(name = "Longitude")
@@ -68,10 +73,28 @@ public class Shop extends Model {
     private long lastUpdatedBy;
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
+    @Column(name = "IsSync")
+    private boolean isSync;
 
     public Shop() {
         super();
         this.status = true;
+    }
+
+    public long getUID() {
+        return UID;
+    }
+
+    public void setUID(long UID) {
+        this.UID = UID;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 
     public String getCode() {
@@ -90,12 +113,12 @@ public class Shop extends Model {
         this.shopName = shopName;
     }
 
-    public long getUserID() {
-        return userID;
+    public String getWorkingTime() {
+        return workingTime;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
+    public void setWorkingTime(String workingTime) {
+        this.workingTime = workingTime;
     }
 
     public String getDescription() {
@@ -162,60 +185,52 @@ public class Shop extends Model {
         this.address = address;
     }
 
-    public int getRegionL1() {
+    public long getRegionL1() {
         return regionL1;
     }
 
-    public void setRegionL1(int regionL1) {
+    public void setRegionL1(long regionL1) {
         this.regionL1 = regionL1;
     }
 
-    public int getRegionL2() {
+    public long getRegionL2() {
         return regionL2;
     }
 
-    public void setRegionL2(int regionL2) {
+    public void setRegionL2(long regionL2) {
         this.regionL2 = regionL2;
     }
 
-    public int getRegionL3() {
+    public long getRegionL3() {
         return regionL3;
     }
 
-    public void setRegionL3(int regionL3) {
+    public void setRegionL3(long regionL3) {
         this.regionL3 = regionL3;
     }
 
-    public int getRegionL4() {
+    public long getRegionL4() {
         return regionL4;
     }
 
-    public void setRegionL4(int regionL4) {
+    public void setRegionL4(long regionL4) {
         this.regionL4 = regionL4;
     }
 
-    public int getRegionL5() {
+    public long getRegionL5() {
         return regionL5;
     }
 
-    public void setRegionL5(int regionL5) {
+    public void setRegionL5(long regionL5) {
         this.regionL5 = regionL5;
     }
 
-    public int getRegionL6() {
+    public long getRegionL6() {
         return regionL6;
     }
 
-    public void setRegionL6(int regionL6) {
+    public void setRegionL6(long regionL6) {
         this.regionL6 = regionL6;
-    }
-
-    public int getRegionL7() {
-        return regionL7;
-    }
-
-    public void setRegionL7(int regionL7) {
-        this.regionL7 = regionL7;
     }
 
     public double getLatitude() {
@@ -320,5 +335,29 @@ public class Shop extends Model {
 
     public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
+    }
+
+    public boolean isSync() {
+        return isSync;
+    }
+
+    public void setIsSync(boolean isSync) {
+        this.isSync = isSync;
+    }
+
+    public static boolean isCreated() {
+        Shop shop = new Select().from(Shop.class).executeSingle();
+        if (shop == null) {
+            return false;
+        } else
+            return true;
+    }
+
+    public static Shop getShopInfo() {
+        return new Select().from(Shop.class).executeSingle();
+    }
+
+    public static List<Shop> getAllShop() {
+        return new Select().from(Shop.class).execute();
     }
 }

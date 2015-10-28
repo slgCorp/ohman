@@ -32,9 +32,12 @@
                 android:layout_marginTop="@dimen/activity_create_edit_marginTop">
 
                 <EditText
+                    android:id="@+id/edtShopName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/create_shop_name" />
+                    android:hint="@string/create_shop_name"
+                    android:maxLength="20"
+                    android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -45,6 +48,7 @@
                 android:layout_marginTop="@dimen/activity_create_edit_marginTop">
 
                 <EditText
+                    android:id="@+id/edtShopPeriod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/time_work"
@@ -74,16 +78,19 @@
                     android:orientation="vertical">
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/food" />
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/fashion" />
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/technology" />
@@ -96,21 +103,25 @@
                     android:orientation="vertical">
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sport" />
+                        android:text="Làm đẹp" />
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/study" />
+                        android:text="Gia dụng" />
 
                     <CheckBox
+                        android:id="@+id/ckbIndustry6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/electronic" />
+                        android:text="Sách" />
 
                     <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btnOtherIndustry"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

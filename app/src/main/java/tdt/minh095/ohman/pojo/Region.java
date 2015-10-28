@@ -10,6 +10,17 @@ import java.util.List;
 
 @Table(name = "T00_Region", id = "_id")
 public class Region extends Model implements Serializable {
+    /**
+     * Region level 4 : Provincial
+     */
+    public static final int REGION_LEVEL_4 = 4;
+
+    /**
+     * Region level 5 : District
+     */
+    public static final int REGION_LEVEL_5 = 5;
+
+
     @Column(name = "RegionCode")
     private String regionCode;
     @Column(name = "RegionLevel")
