@@ -10,12 +10,14 @@ import java.util.List;
 @Table(name = "T02_Customer", id = "_id")
 public class Customer extends Model {
 
+    @Column(name = "UID")
+    private long uid;
     @Column(name = "Code")
     private String code;
     @Column(name = "UserID")
-    private String userID;
+    private long userID;
     @Column(name = "ShopID")
-    private String shopID;
+    private long shopID;
     @Column(name = "CustomerName")
     private String customerName;
     @Column(name = "CustomerGroupID")
@@ -58,10 +60,20 @@ public class Customer extends Model {
     private long lastUpdatedBy;
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
+    @Column(name = "IsSync")
+    private boolean isSync;
 
     public Customer() {
         super();
         this.status = true;
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     public String getCode() {
@@ -72,19 +84,19 @@ public class Customer extends Model {
         this.code = code;
     }
 
-    public String getUserID() {
+    public long getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(long userID) {
         this.userID = userID;
     }
 
-    public String getShopID() {
+    public long getShopID() {
         return shopID;
     }
 
-    public void setShopID(String shopID) {
+    public void setShopID(long shopID) {
         this.shopID = shopID;
     }
 
@@ -254,6 +266,14 @@ public class Customer extends Model {
 
     public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
+    }
+
+    public boolean isSync() {
+        return isSync;
+    }
+
+    public void setIsSync(boolean isSync) {
+        this.isSync = isSync;
     }
 
     public static List<Customer> getAll() {

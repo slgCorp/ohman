@@ -9,7 +9,8 @@ import java.util.List;
 
 @Table(name = "T02_CustomerGroup", id = "_id")
 public class CustomerGroup extends Model {
-
+    @Column(name = "UID")
+    private long uid;
     @Column(name = "Code")
     private String code;
     @Column(name = "ShopID")
@@ -30,9 +31,19 @@ public class CustomerGroup extends Model {
     private long lastUpdatedBy;
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
+    @Column(name = "IsSync")
+    private boolean isSync;
 
     public CustomerGroup() {
         super();
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
     public String getCode() {
@@ -115,6 +126,14 @@ public class CustomerGroup extends Model {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
     }
 
+    public boolean isSync() {
+        return isSync;
+    }
+
+    public void setIsSync(boolean isSync) {
+        this.isSync = isSync;
+    }
+
     public static List<CustomerGroup> getAll() {
 
         return new Select()
@@ -132,7 +151,7 @@ public class CustomerGroup extends Model {
                 .execute();
     }
 
-    public static CustomerGroup getCustomerGroupById(long id){
+    public static CustomerGroup getCustomerGroupById(long id) {
 
         return new Select()
                 .from(CustomerGroup.class)
@@ -140,7 +159,7 @@ public class CustomerGroup extends Model {
                 .executeSingle();
     }
 
-    public static int getCustomerCountById(long id){
+    public static int getCustomerCountById(long id) {
 
         return new Select()
                 .from(Customer.class)
