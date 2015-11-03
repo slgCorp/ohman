@@ -41,17 +41,30 @@
     <string name="main_screen_item_QA"><![CDATA[Q & A]]></string>
     <string name="main_screen_item_favorite">Yêu thích</string>
 
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="undo">Hoàn tác</string>
+
+    <string name="provincials_hint">Tỉnh / Thành</string>
+    <string name="districts_hint">Quận / Huyện</string>
+
     <string name="title_fragment_customer">Khách Hàng</string>
     <string name="fragment_customer_item_address">Địa chỉ: </string>
     <string name="fragment_customer_item_phone_number">SĐT: </string>
     <string name="fragment_customer_item_name_example">Sala Group</string>
     <string name="fragment_customer_item_count_example">(99)</string>
     <string name="fragment_customer_item_phone_example">0123456789</string>
+    <string name="fragment_customer_add_successful_snackbar">Thêm khách hàng thành công</string>
+    <string name="fragment_customer_edit_successful_snackbar">Cập nhật thành công</string>
+    <string name="fragment_customer_delete_successful_snackbar">Đã xóa khách hàng</string>
 
     <string name="title_fragment_customer_group">Nhóm Khách Hàng</string>
     <string name="title_fragment_add_customer_group"><u>Thêm nhóm Khách Hàng</u></string>
-    <string name="notification_add_customer_group_ok">Đã thêm nhóm thành công</string>
+    <string name="fragment_customer_group_add_group_successful_snackbar">Thêm nhóm thành công</string>
+    <string name="fragment_customer_group_edit_group_successful_snackbar">Cập nhật thành công</string>
+    <string name="fragment_customer_group_name_error">Vui lòng nhập tên nhóm</string>
     <string name="notification_add_customer_group_undo">Hoàn tác</string>
+    <string name="fragment_customer_group_nogroup">- Không nhóm -</string>
 
     <string name="title_fragment_customer_detail">Thông tin khách hàng</string>
     <string name="customer_detail_name">Họ Tên</string>
@@ -63,6 +76,16 @@
     <string name="customer_detail_gender_male">Nam</string>
     <string name="customer_detail_gender_female">Nữ</string>
     <string name="customer_detail_gender_None">Khác</string>
+    <string name="customer_detail_save">Lưu</string>
+    <string name="customer_detail_delete_alert">Xóa khách hàng?</string>
+    <string name="customer_detail_add_customer_group_successful_snackbar">Thêm nhóm thành công</string>
+    <string name="customer_detail_add_customer_group_error">Vui lòng nhập tên nhóm</string>
+    <string name="customer_detail_customer_name_empty_error">Vui lòng nhập tên khách hàng</string>
+    <string name="customer_detail_customer_name_special_characters_error">Vui lòng nhập tên khách hàng không có ký tự đặc biệt</string>
+    <string name="customer_detail_phone_error">Vui lòng nhập số ĐT ít nhất 9 chữ số</string>
+    <string name="customer_detail_provincials_error">Vui lòng chọn Tỉnh / Thành</string>
+    <string name="customer_detail_max_birthyear_error">Vui lòng chọn năm sinh trước </string>
+    <string name="customer_detail_min_birthyear_error">Vui lòng chọn năm sinh sau </string>
 
 
     <string name="btn_customer_group_cancel">Hủy</string>
@@ -205,6 +228,8 @@
     <string name="shop_phone">Số điện thoại Shop</string>
     <string name="address_shop">Số nhà</string>
     <string name="create_info_shop">Thông tin liên lạc</string>
+    <string name="title_activity_customer_details">CustomerDetailsActivity</string>
+    <string name="title_activity_fragment_attach">FragmentAttachActivity</string>
 
 </resources>
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tdt.minh095.ohman.R;
-import tdt.minh095.ohman.pojo.ContactInfo;
+import tdt.minh095.ohman.pojo.Cumstomer;
 
 
 /**
@@ -17,9 +17,9 @@ import tdt.minh095.ohman.pojo.ContactInfo;
  */
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
-    private ArrayList<ContactInfo> contactList;
+    private ArrayList<Cumstomer> contactList;
 
-    public ContactAdapter(ArrayList<ContactInfo> contactList) {
+    public ContactAdapter(ArrayList<Cumstomer> contactList) {
         this.contactList = contactList;
     }
 
@@ -30,7 +30,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
-        ContactInfo ci = contactList.get(i);
+        Cumstomer ci = contactList.get(i);
         contactViewHolder.vName.setText(ci.phone);
         contactViewHolder.vSurname.setText(ci.address);
         contactViewHolder.vTitle.setText(ci.name);
@@ -53,7 +53,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         public ContactViewHolder(View v) {
             super(v);
             vName = (TextView) v.findViewById(R.id.txtName);
-            vSurname = (TextView) v.findViewById(R.id.txtSurname);
+//            vSurname = (TextView) v.findViewById(R.id.txtSurname);
             vTitle = (TextView) v.findViewById(R.id.title);
         }
     }

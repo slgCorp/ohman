@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import tdt.minh095.ohman.R;
-import tdt.minh095.ohman.pojo.ContactInfo;
 
 
 /**

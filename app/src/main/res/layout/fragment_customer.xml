@@ -43,6 +43,7 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnDeleteSelected"
             android:layout_width="@dimen/footer_button_size"
             android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="right|center_vertical"
@@ -51,6 +52,7 @@
             android:gravity="right" />
 
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnAddNew"
             android:layout_width="@dimen/footer_button_size"
             android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="left|center_vertical"
