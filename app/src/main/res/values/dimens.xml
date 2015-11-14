@@ -65,4 +65,13 @@
     <dimen name="item_navigation_image_marginLeft">16dp</dimen>
     <dimen name="item_image_size">20dp</dimen>
     <dimen name="item_navigation_text_marginLeft">66dp</dimen>
+
+    <dimen name="fragment_title_magin_top">10dp</dimen>
+    <dimen name="tv_detail_customer_margin_left">5dp</dimen>
+
+    <dimen name="fab_add_customer_margin_right">16dp</dimen>
+    <dimen name="fab_add_customer_margin_left">16dp</dimen>
+    <dimen name="fab_add_customer_margin_bottom">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
 </resources>

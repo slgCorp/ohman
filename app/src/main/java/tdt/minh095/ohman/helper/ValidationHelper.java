@@ -7,8 +7,11 @@ import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import tdt.minh095.ohman.pojo.BadWord;
 
 public class ValidationHelper {
 
@@ -77,92 +80,6 @@ public class ValidationHelper {
                         }
                     }
                 }
-            }
-        });
-    }
-
-    public static String getValidFormatPhone(String phone) {
-
-        phone = phone.replaceAll(" ", "");
-//        phoneNumber = phoneNumber.replace("-", "");
-//        phoneNumber = phoneNumber.replace("+", "");
-//        phoneNumber = phoneNumber.replace("*", "");
-//        phoneNumber = phoneNumber.replace("/", "");
-//        phoneNumber = phoneNumber.replace("#", "");
-//        phoneNumber = phoneNumber.replace("(", "");
-//        phoneNumber = phoneNumber.replace(")", "");
-//        phoneNumber = phoneNumber.replace(",", "");
-//        phoneNumber = phoneNumber.replace(".", "");
-//        phoneNumber = phoneNumber.replace(";", "");
-
-        return phone;
-    }
-
-    public static String getViFormatPhone(String phone) {
-
-        phone = phone.substring(0, 7) + " " + phone.substring(7);
-        phone = phone.substring(0, 4) + " " + phone.substring(4);
-
-        return phone;
-    }
-
-    public static void addViPhoneTextChanged(final EditText edt) {
-
-
-        edt.addTextChangedListener(new TextWatcher() {
-
-            int beforeLength;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                beforeLength = edt.getText().toString().length();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                int afterLength = s.length();
-                if (afterLength == 5) {
-
-                    if (afterLength > beforeLength) {
-
-                        StringBuilder strBuilder = new StringBuilder(s.toString());
-                        strBuilder.insert(4, " ");
-                        edt.setText(strBuilder);
-                        edt.setSelection(strBuilder.length());
-
-                    } else {
-
-                        StringBuilder strBuilder = new StringBuilder(s.toString());
-                        strBuilder.delete(strBuilder.length() - 1, strBuilder.length());
-                        edt.setText(strBuilder.toString());
-                        edt.setSelection(strBuilder.length());
-                    }
-                } else if (afterLength == 9) {
-
-                    if (afterLength > beforeLength) {
-
-                        StringBuilder strBuilder = new StringBuilder(s.toString());
-                        strBuilder.insert(8, " ");
-                        edt.setText(strBuilder.toString());
-                        edt.setSelection(strBuilder.length());
-//                        s.insert(s.length() - 1, " ");
-                    } else {
-
-                        StringBuilder strBuilder = new StringBuilder(s.toString());
-                        strBuilder.delete(strBuilder.length() - 1, strBuilder.length());
-                        edt.setText(strBuilder.toString());
-                        edt.setSelection(strBuilder.length());
-                    }
-
-                }
-
             }
         });
     }
@@ -262,6 +179,93 @@ public class ValidationHelper {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
+    }
+
+    public static String getValidFormatPhone(String phone) {
+
+        phone = phone.replaceAll(" ", "");
+//        phoneNumber = phoneNumber.replace("-", "");
+//        phoneNumber = phoneNumber.replace("+", "");
+//        phoneNumber = phoneNumber.replace("*", "");
+//        phoneNumber = phoneNumber.replace("/", "");
+//        phoneNumber = phoneNumber.replace("#", "");
+//        phoneNumber = phoneNumber.replace("(", "");
+//        phoneNumber = phoneNumber.replace(")", "");
+//        phoneNumber = phoneNumber.replace(",", "");
+//        phoneNumber = phoneNumber.replace(".", "");
+//        phoneNumber = phoneNumber.replace(";", "");
+
+        return phone;
+    }
+
+    public static String getViFormatPhone(String phone) {
+
+        StringBuilder strBuilder = new StringBuilder(phone);
+
+        if (phone.length() >= 11) {
+
+            strBuilder.insert(8, " ");
+            strBuilder.insert(4, " ");
+        } else {
+
+            if (phone.length() >= 8) {
+
+                strBuilder.insert(7, " ");
+            }
+            if (phone.length() >= 4) {
+                strBuilder.insert(3, " ");
+            }
+        }
+        return strBuilder.toString();
+    }
+
+    public static void addViPhoneTextChanged(final EditText edt) {
+
+
+        edt.addTextChangedListener(new TextWatcher() {
+
+            int beforeLength;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                beforeLength = edt.getText().toString().length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                int afterLength = s.length();
+                if (afterLength != beforeLength) {
+
+                    String validPhone = getValidFormatPhone(s.toString());
+                    String viPhone = getViFormatPhone(validPhone);
+                    edt.setText(viPhone);
+                    edt.setSelection(viPhone.length());
+                }
+            }
+        });
+    }
+
+    public static boolean checkBadWordContaining(String text) {
+
+        for (BadWord badWord : BadWord.getAllBadWords()) {
+
+            StringTokenizer tokenizer = new StringTokenizer(text);
+            while (tokenizer.hasMoreTokens()){
+
+                if(tokenizer.nextToken().equals(badWord.getWord())){
+
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

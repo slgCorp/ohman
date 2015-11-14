@@ -40,4 +40,8 @@
     <color name="transparent_blue_false">#B32196F3</color>
     <color name="transparent_blue_true">#CC2196F3</color>
 
+    <color name="cyan">#33b5e5</color>
+
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>
