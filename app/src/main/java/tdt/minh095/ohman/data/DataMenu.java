@@ -15,7 +15,7 @@ import tdt.minh095.ohman.pojo.KeySettingType;
  */
 public class DataMenu {
     private Context context;
-    private List<KeySettingType> lstKey;
+    public List<KeySettingType> lstKey;
 
     public DataMenu(Context context) {
         this.context = context;

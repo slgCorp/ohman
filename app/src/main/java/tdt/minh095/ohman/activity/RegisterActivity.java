@@ -78,6 +78,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtBirthday.setOnFocusChangeListener(this);
         edtPhoneNumber.setOnFocusChangeListener(this);
 
+        edtBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ValidationHelper.showDatetimeDialog(edtBirthday);
+            }
+        });
+
         Intent intent = getIntent();
         if (intent != null) {
             loginType = intent.getStringExtra("loginType");

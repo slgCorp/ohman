@@ -21,7 +21,7 @@
             android:background="@drawable/savvy_money_logo_egg" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left|bottom"

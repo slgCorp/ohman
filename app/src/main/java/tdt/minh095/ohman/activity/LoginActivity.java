@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -49,6 +50,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import butterknife.Bind;
@@ -106,9 +108,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     /* Client used to interact with Google APIs. */
     private GoogleApiClient mGoogleApiClient;
 
+    private String username;
+
+    private SharedPreferences loginPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO get locale dynamically from DB
+        Locale locale = new Locale("vi");
+        Locale.setDefault(locale);
 
         FacebookSdk.sdkInitialize(this);
         mCallBackManager = CallbackManager.Factory.create();
@@ -135,6 +145,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPassword.setOnKeyListener(this);
 
         Log.i(Constant.TAG, NetworkUtil.getIpAddr(this));
+
+        loginPreferences = getSharedPreferences(Constant.LOGIN_PREFERENCES, MODE_PRIVATE);
+        username = loginPreferences.getString(Constant.LOGIN_PREFERENCES_USERNAME, "");
+        password = loginPreferences.getString(Constant.LOGIN_PREFERENCES_PASSWORD, "");
+        if(!username.equals("") && !password.equals("")){
+
+//            edtUserName.setText(username);
+//            edtPassword.setText(password);
+//            btnLogin.callOnClick();
+            moveToMainScreen();
+        }
     }
 
     @Override
@@ -173,10 +194,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (codeCheck == 0) {
 
                 //Input value have no errors
-                String username = edtUserName.getText().toString();
+                username = edtUserName.getText().toString();
                 String passwd = edtPassword.getText().toString();
                 try {
-                    password = EncryptionUtil.SHA1(passwd);
+                    String password1 = EncryptionUtil.SHA1(passwd);
+                    password = passwd;
                     Log.i(Constant.TAG, password);
                 } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -334,11 +356,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public void moveToMainScreen() {
+
         try {
 
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            i.putExtra(Constant.USERNAME, username);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+            this.finish();
+
+            //Lưu user + password vào SharedPreferences
+            SharedPreferences.Editor editor = loginPreferences.edit();
+            editor.putString(Constant.LOGIN_PREFERENCES_USERNAME, username);
+            editor.putString(Constant.LOGIN_PREFERENCES_PASSWORD, password);
+            editor.apply();
 
             //Cập nhật trạng thái login
             LoginActivity.status = 1;

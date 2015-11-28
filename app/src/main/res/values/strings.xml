@@ -72,7 +72,7 @@
     <string name="customer_detail_address">Thông tin địa chỉ</string>
     <string name="customer_detail_type">Nhóm khách</string>
     <string name="customer_detail_gender">Giới tính</string>
-    <string name="customer_detail_birthday">Sinh nhật</string>
+    <string name="customer_detail_birthday">Ngày sinh</string>
     <string name="customer_detail_gender_male">Nam</string>
     <string name="customer_detail_gender_female">Nữ</string>
     <string name="customer_detail_gender_None">Khác</string>
@@ -230,6 +230,8 @@
     <string name="create_info_shop">Thông tin liên lạc</string>
     <string name="title_activity_customer_details">CustomerDetailsActivity</string>
     <string name="title_activity_fragment_attach">FragmentAttachActivity</string>
+    <string name="default_cancel">Hủy</string>
+    <string name="default_save">Lưu</string>
 
 </resources>
 

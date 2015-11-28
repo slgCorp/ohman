@@ -12,6 +12,7 @@ public class Constant {
     public static final String ALLOW_SYMBOLS = " _";
     public static final String PROTOCOL = "http://";
     public static final String DOMAIN = "ohman.vn";
+//public static final String DOMAIN = "192.168.0.142:9090";
     public static final String API_ROOT = "/api/users/";
     public static final String API_LOGIN = "login";
     public static final String API_REGISTER = "register";
@@ -19,6 +20,15 @@ public class Constant {
     public static final String AUTH_GOOGLE = "GooglePlus";
     public static final String AUTH_SALA = "Normal";
     public static final String TAG = "SalaGroup";
+
+    public static final String USERNAME = "USERNAME";
+
+    public static final String LOGIN_PREFERENCES = "LOGIN_PREFERENCES";
+    public static final String LOGIN_PREFERENCES_USERNAME = "LOGIN_PREFERENCES_USERNAME";
+    public static final String LOGIN_PREFERENCES_PASSWORD = "LOGIN_PREFERENCES_PASSWORD";
+
+    public static final int CUSTOMER_MAX_AGE = 20;
+    public static final int CUSTOMER_MIN_AGE = 13;
 
     public static final class Statement {
 

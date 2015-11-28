@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.adapter.CustomerGroupSpinnerAdapter;
@@ -38,11 +37,10 @@ import tdt.minh095.ohman.view.CustomSpinner;
 public class CustomerDetailsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private LinearLayout customerDetailsLayout;
-    private EditText edtCustomerName, edtCustomerPhone, edtAddress;
+    private EditText edtCustomerName, edtCustomerPhone, edtBirthday, edtAddress;
     private CustomSpinner spnProvincials;
     private CustomSpinner spnDistricts;
     private Spinner spnCustomerGroup;
-    private DatePicker dpkBirthday;
     private RadioGroup rdgGenderType;
     private Button btnCusDetailCancel, btnCusDetailDelete, btnCusDetailUpdate;
     private ImageButton btnAddGroup;
@@ -60,20 +58,20 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
 
     private int mState;
 
-    private void initView(){
+    private void initView() {
+
+        Log.d("myDebug", new Date().getTime()+"");
 
         customerDetailsLayout = (LinearLayout) findViewById(R.id.customerDetailsLayout);
 
         edtCustomerName = (EditText) findViewById(R.id.edtCustomerName);
         edtCustomerPhone = (EditText) findViewById(R.id.edtCustomerPhone);
+        edtBirthday = (EditText) findViewById(R.id.edtBirthday);
         edtAddress = (EditText) findViewById(R.id.edtAddress);
 
         spnProvincials = (CustomSpinner) findViewById(R.id.spnProvincials);
         spnDistricts = (CustomSpinner) findViewById(R.id.spnDistricts);
         spnCustomerGroup = (Spinner) findViewById(R.id.spnCustomerGroup);
-
-        dpkBirthday = (DatePicker) findViewById(R.id.dpkBirthday);
-        dpkBirthday.updateDate(MAX_BIRTH_YEAR, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
         rdgGenderType = (RadioGroup) findViewById(R.id.rdgGenderType);
         rdgGenderType.check(R.id.rdbMale);
@@ -105,6 +103,8 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
             mState = Constant.Statement.IS_UPDATETING;
         }
 
+        edtBirthday.setOnClickListener(this);
+
         btnCusDetailCancel.setOnClickListener(this);
         btnCusDetailDelete.setOnClickListener(this);
         btnCusDetailUpdate.setOnClickListener(this);
@@ -125,9 +125,11 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
             Customer c = Customer.getCustomerById(_id);
 
             edtCustomerName.setText(c.getCustomerName());
-            edtCustomerName.setSelection(c.getCustomerName().length());
+//            edtCustomerName.setSelection(c.getCustomerName().length());
 
             edtCustomerPhone.setText(ValidationHelper.getViFormatPhone(c.getPhone()));
+
+            edtBirthday.setText(c.getBirthday());
 
             if (c.getRegionL4() != 0) {
 
@@ -153,12 +155,6 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
             }
 
             edtAddress.setText(c.getAddress());
-
-            StringTokenizer tokenizer = new StringTokenizer(c.getBirthday(), "-");
-            int day = Integer.parseInt(tokenizer.nextToken());
-            int month = Integer.parseInt(tokenizer.nextToken()) - 1;
-            int year = Integer.parseInt(tokenizer.nextToken());
-            dpkBirthday.updateDate(year, month, day);
 
             switch (c.getGender()) {
                 case 1:
@@ -322,6 +318,9 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
                     c.setCustomerName(edtCustomerName.getText().toString().trim());
 
                     c.setPhone(ValidationHelper.getValidFormatPhone(edtCustomerPhone.getText().toString()));
+
+                    c.setBirthday(edtBirthday.getText().toString());
+
                     try {
                         long regionL4Id = provincialsAdapter.getItem(spnProvincials.getSelectedItemPosition()).getId();
                         c.setRegionL4(regionL4Id);
@@ -337,12 +336,6 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
 
                     String address = edtAddress.getText().toString().trim();
                     c.setAddress(address);
-
-                    Calendar birthdayCalendar = Calendar.getInstance();
-                    birthdayCalendar.set(dpkBirthday.getYear(), dpkBirthday.getMonth(), dpkBirthday.getDayOfMonth());
-                    Date birthDay = birthdayCalendar.getTime();
-                    SimpleDateFormat birthdayFormat = new SimpleDateFormat(Constant.DATE_FORMAT_VIETNAM);
-                    c.setBirthday(birthdayFormat.format(birthDay));
 
                     switch (rdgGenderType.getCheckedRadioButtonId()) {
                         case R.id.rdbMale:
@@ -391,10 +384,15 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
                 showDialogInsertCustomerGroup();
 
                 break;
+            case R.id.edtBirthday:
+
+                ValidationHelper.showDatetimeDialog(edtBirthday);
+
+                break;
         }
     }
 
-    public void showDialogInsertCustomerGroup() {
+    private void showDialogInsertCustomerGroup() {
 
         final CustomerGroup cg = new CustomerGroup();
 
@@ -486,17 +484,17 @@ public class CustomerDetailsActivity extends AppCompatActivity implements View.O
                 return false;
             }
         }
-        if (dpkBirthday.getYear() > MAX_BIRTH_YEAR) {
-
-            Snackbar.make(customerDetailsLayout, getString(R.string.customer_detail_max_birthyear_error) + (MAX_BIRTH_YEAR + 1), Snackbar.LENGTH_LONG).show();
-            dpkBirthday.requestFocus();
-            return false;
-        } else if (dpkBirthday.getYear() <= MIN_BIRTH_YEAR) {
-
-            Snackbar.make(customerDetailsLayout, getString(R.string.customer_detail_min_birthyear_error) + MIN_BIRTH_YEAR, Snackbar.LENGTH_LONG).show();
-            dpkBirthday.requestFocus();
-            return false;
-        }
+//        if (dpkBirthday.getYear() > MAX_BIRTH_YEAR) {
+//
+//            Snackbar.make(customerDetailsLayout, getString(R.string.customer_detail_max_birthyear_error) + (MAX_BIRTH_YEAR + 1), Snackbar.LENGTH_LONG).show();
+//            dpkBirthday.requestFocus();
+//            return false;
+//        } else if (dpkBirthday.getYear() <= MIN_BIRTH_YEAR) {
+//
+//            Snackbar.make(customerDetailsLayout, getString(R.string.customer_detail_min_birthyear_error) + MIN_BIRTH_YEAR, Snackbar.LENGTH_LONG).show();
+//            dpkBirthday.requestFocus();
+//            return false;
+//        }
 
         return true;
     }

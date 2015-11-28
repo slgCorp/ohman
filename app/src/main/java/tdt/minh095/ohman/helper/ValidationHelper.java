@@ -2,15 +2,25 @@ package tdt.minh095.ohman.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.pojo.BadWord;
 
 public class ValidationHelper {
@@ -266,6 +276,39 @@ public class ValidationHelper {
             }
         }
         return true;
+    }
+
+    public static void showDatetimeDialog(final EditText editText){
+
+        final DatePicker dpkBirthday = new DatePicker(editText.getContext());
+        dpkBirthday.setCalendarViewShown(false);
+        dpkBirthday.setMaxDate(new Date().getTime());
+
+        if (!editText.getText().toString().equals("")) {
+            StringTokenizer tokenizer = new StringTokenizer(editText.getText().toString(), "-");
+            int day = Integer.parseInt(tokenizer.nextToken());
+            int month = Integer.parseInt(tokenizer.nextToken()) - 1;
+            int year = Integer.parseInt(tokenizer.nextToken());
+            dpkBirthday.updateDate(year, month, day);
+        } else {
+            dpkBirthday.updateDate(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        }
+
+        new AlertDialog.Builder(editText.getContext())
+                .setView(dpkBirthday)
+                .setNegativeButton(editText.getContext().getString(R.string.default_cancel), null)
+                .setPositiveButton(editText.getContext().getString(R.string.default_save), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Calendar birthdayCalendar = Calendar.getInstance();
+                        birthdayCalendar.set(dpkBirthday.getYear(), dpkBirthday.getMonth(), dpkBirthday.getDayOfMonth());
+                        Date birthDay = birthdayCalendar.getTime();
+                        SimpleDateFormat birthdayFormat = new SimpleDateFormat(Constant.DATE_FORMAT_VIETNAM);
+                        editText.setText(birthdayFormat.format(birthDay));
+                    }
+                })
+                .show();
     }
 }
 

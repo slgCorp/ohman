@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -43,10 +44,11 @@ import tdt.minh095.ohman.data.DataMenu;
 import tdt.minh095.ohman.fragment.Fragment_Customer;
 import tdt.minh095.ohman.fragment.Fragment_Product;
 import tdt.minh095.ohman.fragment.Fragment_Shop;
+import tdt.minh095.ohman.helper.Constant;
 import tdt.minh095.ohman.helper.EncryptionUtil;
 import tdt.minh095.ohman.pojo.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     boolean status = false;
     private User user;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private MenuDrawer mDrawer;
     private ListView lstSetting;
+    private DataMenu dataMenu;
     private TextView tvTitle;
 
     public String[] getTAB_NAME() {
@@ -84,10 +87,40 @@ public class MainActivity extends AppCompatActivity {
         mDrawer = MenuDrawer.attach(this);
         mDrawer.setContentView(R.layout.activity_main);
         mDrawer.setMenuView(R.layout.menu_sample);
+        ((TextView) mDrawer.findViewById(R.id.tvUser)).setText(getIntent().getStringExtra(Constant.USERNAME));
         lstSetting = (ListView) findViewById(R.id.lstSetting);
         lstSetting.setDivider(null);
-        DataMenu dataMenu = new DataMenu(this);
+        dataMenu = new DataMenu(this);
         lstSetting.setAdapter(dataMenu.getSettingAdapter());
+        lstSetting.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        String menuItemTitle = dataMenu.lstKey.get(position).getTitle();
+
+        if (menuItemTitle.equals(getString(R.string.navigation_logout))) {
+
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            try {
+                User user = User.load(User.class, LoginActivity.USER_ROOT);
+                user.status = 0;
+                user.save();
+            } catch (NullPointerException e) {
+                e.getMessage();
+            }
+            getSharedPreferences(Constant.LOGIN_PREFERENCES, MODE_PRIVATE)
+                    .edit()
+                    .putString(Constant.LOGIN_PREFERENCES_USERNAME, "")
+                    .putString(Constant.LOGIN_PREFERENCES_PASSWORD, "")
+                    .commit();
+
+            startActivity(intent);
+            this.finish();
+
+
+        }
     }
 
     public void setUpToolbar() {
@@ -98,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_navigation);
         tvTitle.setText(getTAB_NAME()[0]);
     }
-
 
     private void setUpTabViewPager() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -142,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                tvTitle.setText(getTAB_NAME()[position] );
+                tvTitle.setText(getTAB_NAME()[position]);
             }
 
             @Override
@@ -205,20 +237,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToComeBackLogin) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            try {
-                User user = User.load(User.class, LoginActivity.USER_ROOT);
-                user.status = 0;
-                user.save();
-            } catch (NullPointerException e) {
-                e.getMessage();
-            }
-            startActivity(intent);
+
             super.onBackPressed();
             return;
         }
         this.doubleBackToComeBackLogin = true;
-        Toast.makeText(this, R.string.press_back_to_logout, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.press_back_to_exit, Toast.LENGTH_SHORT).show();
         mHandler.postDelayed(mRunnable, 2000);
     }
 
