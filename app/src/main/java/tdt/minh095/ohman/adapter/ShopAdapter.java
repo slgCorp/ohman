@@ -12,45 +12,40 @@ import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.pojo.Shop;
 
 
-/**
- * Created by MyPC on 03/10/2015.
- */
-public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ContactViewHolder> {
+public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder> {
 
-    private ArrayList<Shop> shopList;
+    private ArrayList<Shop> shops;
 
-    public ShopAdapter(ArrayList<Shop> shopList) {
-        this.shopList = shopList;
+    public ShopAdapter(ArrayList<Shop> shops) {
+        this.shops = shops;
     }
 
     @Override
     public int getItemCount() {
-        return shopList.size();
+        return shops.size();
     }
 
     @Override
-    public void onBindViewHolder(ContactViewHolder contactViewHolder, int i) {
-        Shop shop = shopList.get(i);
-        contactViewHolder.shopName.setText(shop.getShopName());
-        contactViewHolder.shopAdress.setText(shop.getShopAdress());
-        contactViewHolder.shopPhone.setText(shop.getShopPhone());
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        Shop shop = shops.get(i);
+        viewHolder.shopName.setText(shop.getShopName());
+        viewHolder.shopAdress.setText(shop.getAddress());
+        viewHolder.shopPhone.setText(shop.getPhone());
     }
 
     @Override
-    public ContactViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.
-                from(viewGroup.getContext()).
-                inflate(R.layout.item_list_shop, viewGroup, false);
-
-        return new ContactViewHolder(itemView);
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list_shop, viewGroup, false);
+        return new ViewHolder(itemView);
     }
 
-    public class ContactViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView shopName;
         protected TextView shopAdress;
         protected TextView shopPhone;
 
-        public ContactViewHolder(View v) {
+
+        public ViewHolder(View v) {
             super(v);
             shopName = (TextView) v.findViewById(R.id.tv_shopname);
             shopAdress = (TextView) v.findViewById(R.id.tv_shop_address);

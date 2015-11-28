@@ -14,5 +14,64 @@
     <dimen name="title_name_customer_height">32dp</dimen>
     <dimen name="title_name_product_height">32dp</dimen>
 
-    <dimen name="spinner_height">40dp</dimen>
+    <dimen name="sort_height">40dp</dimen>
+    // main
+    <dimen name="text_size_title_main">20sp</dimen>
+
+    // layout item_title
+    <dimen name="item_title_height">24dp</dimen>
+    <dimen name="item_title_text_margin">10dp</dimen>
+    <dimen name="item_title_text_size">16sp</dimen>
+    <dimen name="item_title_divider_margin_left">10dp</dimen>
+    <dimen name="item_title_divider_margin_right">30dp</dimen>
+    <dimen name="item_title_divider_height">1dp</dimen>
+    //layout item_setting
+    <dimen name="item_setting_textView_height">50dp</dimen>
+    <dimen name="item_setting_textView_margin_left">50dp</dimen>
+    <dimen name="item_setting_image_width">25dp</dimen>
+    <dimen name="item_setting_image_height">25dp</dimen>
+    <dimen name="item_setting_textView_size">18sp</dimen>
+    <dimen name="item_setting_image_marginLeft">16dp</dimen>
+    // activity create customer
+    <dimen name="activity_create_edit_marginBottom">8dp</dimen>
+    <dimen name="activity_create_edit_marginTop">8dp</dimen>
+    <dimen name="activity_create_hint_size">18sp</dimen>
+
+
+    <dimen name="activity_create_customer_padding">16dp</dimen>
+    <dimen name="activity_create_customer_text_info_marginBottom">8dp</dimen>
+    <dimen name="activity_create_customer_text_info_marginLeft">4dp</dimen>
+    <dimen name="activity_create_customer_text_info_size">20sp</dimen>
+    <dimen name="activity_create_customer_card_paddingLeft">4dp</dimen>
+    <dimen name="activity_create_customer_card_paddingRight">4dp</dimen>
+    <dimen name="activity_create_customer_card_corner">4dp</dimen>
+
+    <dimen name="activity_create_customer_text_title_marginLeft">5dp</dimen>
+
+    //activity create shop
+    <dimen name="activity_create_shop_text_info_marginBottom">8dp</dimen>
+    <dimen name="activity_create_shop_text_info_marginLeft">4dp</dimen>
+    <dimen name="activity_create_shop_textSize_button">15sp</dimen>
+    <dimen name="activity_create_shop_button_marginRight">10dp</dimen>
+
+    //fragment product
+    <dimen name="footer_button_size">32dp</dimen>
+    <dimen name="footer_button_margin">4dp</dimen>
+    <dimen name="activity_create_customer_radioGroup_marginTop">12dp</dimen>
+    <dimen name="activity_create_button_complete_marginTop">8dp</dimen>
+    <dimen name="activity_create_button_complete_padding">12dp</dimen>
+    <dimen name="activity_create_margin_between_control">8dp</dimen>
+    <dimen name="image_profile_height">104dp</dimen>
+    <dimen name="item_navigation_image_marginLeft">16dp</dimen>
+    <dimen name="item_image_size">20dp</dimen>
+    <dimen name="item_navigation_text_marginLeft">66dp</dimen>
+
+    <dimen name="fragment_title_magin_top">10dp</dimen>
+    <dimen name="tv_detail_customer_margin_left">5dp</dimen>
+
+    <dimen name="fab_add_customer_margin_right">16dp</dimen>
+    <dimen name="fab_add_customer_margin_left">16dp</dimen>
+    <dimen name="fab_add_customer_margin_bottom">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
 </resources>

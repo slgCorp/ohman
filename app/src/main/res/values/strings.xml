@@ -1,6 +1,126 @@
 <resources>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_store_info">StoreInfo</string>
+    <string name="store_info_item_title">Thông tin cửa hàng</string>
+    <string name="store_info_item_shop_name">Tên cửa hàng</string>
+    <string name="store_info_item_contact_number">Số ĐT giao dịch</string>
+    <string name="store_info_item_address">Địa chỉ</string>
+    <string name="store_info_item_store_adress">Địa chỉ cửa hàng:</string>
+    <string name="store_info_item_working_hours">Thời gian làm việc</string>
+    <string name="store_info_item_working_hours_example">VD:\n\t\tT2&#8211;T6:\t\t8h00&#8211;12h00\n\t\t\t\t\t\t\t\t\t13h00&#8211;18h00\n\t\tT7:\t\t\t\t\t8h00&#8211;12h00\n\t\tCN và ngày lễ nghỉ</string>
+    <string name="store_info_item_product_type">Ngành hàng:</string>
+    <string name="store_info_item_food">Thực Phẩm</string>
+    <string name="store_info_item_fashion">Thời Trang</string>
+    <string name="store_info_item_technology">Công Nghệ</string>
+    <string name="store_info_item_family_stuff">Gia Dụng</string>
+    <string name="store_info_item_office">Văn Phòng Phẩm</string>
+    <string name="store_info_item_book">Sách</string>
+    <string name="store_info_item_mummy_baby"><![CDATA[Mẹ & Bé]]></string>
+    <string name="store_info_item_other_types"><u>Ngành khác</u></string>
+    <string name="store_info_item_update">Cập nhật</string>
+    <string name="store_info_create">Tạo shop</string>
+
+    <string name="title_activity_main_screen">MainScreen</string>
+    <string name="main_screen_item_account_info">Thông tin tài khoản</string>
+    <string name="main_screen_item_store_info">Thông tin cửa hàng</string>
+    <string name="main_screen_item_selling">Bán hàng</string>
+    <string name="main_screen_item_report">Báo cáo</string>
+    <string name="main_screen_item_category">Danh mục</string>
+    <string name="main_screen_item_product_group">Nhóm sản phẩm</string>
+    <string name="main_screen_item_product">Sản Phẩm</string>
+    <string name="main_screen_item_customer_group">Nhóm khách hàng</string>
+    <string name="main_screen_item_customer">Khách hàng</string>
+    <string name="main_screen_item_buying">Mua hàng</string>
+    <string name="main_screen_item_buying_history">Lịch sử mua hàng</string>
+    <string name="main_screen_item_lookup">Tra cứu</string>
+    <string name="main_screen_item_QA"><![CDATA[Q & A]]></string>
+    <string name="main_screen_item_favorite">Yêu thích</string>
+
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="undo">Hoàn tác</string>
+
+    <string name="provincials_hint">Tỉnh / Thành</string>
+    <string name="districts_hint">Quận / Huyện</string>
+
+    <string name="title_fragment_customer">Khách Hàng</string>
+    <string name="fragment_customer_item_address">Địa chỉ: </string>
+    <string name="fragment_customer_item_phone_number">SĐT: </string>
+    <string name="fragment_customer_item_name_example">Sala Group</string>
+    <string name="fragment_customer_item_count_example">(99)</string>
+    <string name="fragment_customer_item_phone_example">0123456789</string>
+    <string name="fragment_customer_add_successful_snackbar">Thêm khách hàng thành công</string>
+    <string name="fragment_customer_edit_successful_snackbar">Cập nhật thành công</string>
+    <string name="fragment_customer_delete_successful_snackbar">Đã xóa khách hàng</string>
+
+    <string name="title_fragment_customer_group">Nhóm Khách Hàng</string>
+    <string name="title_fragment_add_customer_group"><u>Thêm nhóm Khách Hàng</u></string>
+    <string name="fragment_customer_group_add_group_successful_snackbar">Thêm nhóm thành công</string>
+    <string name="fragment_customer_group_edit_group_successful_snackbar">Cập nhật thành công</string>
+    <string name="fragment_customer_group_name_error">Vui lòng nhập tên nhóm</string>
+    <string name="notification_add_customer_group_undo">Hoàn tác</string>
+    <string name="fragment_customer_group_nogroup">- Không nhóm -</string>
+
+    <string name="title_fragment_customer_detail">Thông tin khách hàng</string>
+    <string name="customer_detail_name">Họ Tên</string>
+    <string name="customer_detail_phone">Số điện thoại</string>
+    <string name="customer_detail_address">Thông tin địa chỉ</string>
+    <string name="customer_detail_type">Nhóm khách</string>
+    <string name="customer_detail_gender">Giới tính</string>
+    <string name="customer_detail_birthday">Sinh nhật</string>
+    <string name="customer_detail_gender_male">Nam</string>
+    <string name="customer_detail_gender_female">Nữ</string>
+    <string name="customer_detail_gender_None">Khác</string>
+    <string name="customer_detail_save">Lưu</string>
+    <string name="customer_detail_delete_alert">Xóa khách hàng?</string>
+    <string name="customer_detail_add_customer_group_successful_snackbar">Thêm nhóm thành công</string>
+    <string name="customer_detail_add_customer_group_error">Vui lòng nhập tên nhóm</string>
+    <string name="customer_detail_customer_name_empty_error">Vui lòng nhập tên khách hàng</string>
+    <string name="customer_detail_customer_name_special_characters_error">Vui lòng nhập tên khách hàng không có ký tự đặc biệt</string>
+    <string name="customer_detail_phone_error">Vui lòng nhập số ĐT ít nhất 9 chữ số</string>
+    <string name="customer_detail_provincials_error">Vui lòng chọn Tỉnh / Thành</string>
+    <string name="customer_detail_max_birthyear_error">Vui lòng chọn năm sinh trước </string>
+    <string name="customer_detail_min_birthyear_error">Vui lòng chọn năm sinh sau </string>
+
+
+    <string name="btn_customer_group_cancel">Hủy</string>
+    <string name="btn_customer_group_save">Lưu</string>
+    <string name="btn_customer_group_delete">Xóa</string>
+
+    <!-- login screen -->
+    <string name="sala">SALA</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">ĐĂNG NHẬP</string>
+    <string name="login_with">Đăng nhập với</string>
+    <string name="forgot_password">QUÊN MẬT KHẨU ?</string>
+    <string name="sign_up">Đăng kí</string>
+    <string name="facebook">Facebook</string>
+    <string name="google_plus">Google+</string>
+    <string name="login_other_account">Tài khoản khác</string>
+
+    <!-- register screen -->
+    <string name="re_password">Nhập lại mật khẩu</string>
+    <string name="display_name">Tên hiển thị</string>
+    <string name="gender">Giới tính</string>
+    <string name="Male">Nam</string>
+    <string name="Female">Nữ</string>
+    <string name="gender_other">Khác</string>
+    <string name="address">Địa chỉ</string>
+    <string name="birth_day">Ngày sinh</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Số điện thoại</string>
+
+    <string name="facebook_app_id">886098914772907</string>
+    <string name="title_activity_fragment_test">FragmentTestActivity</string>
+
     <string name="app_name">OhMan</string>
-    <string-array name="quan">
+    <string-array name="district">
         <item>Quận 1</item>
         <item>Quận 2</item>
         <item>Quận 3</item>
@@ -10,7 +130,7 @@
         <item>Quận 7</item>
         <item>Quận 8</item>
     </string-array>
-    <string-array name="thanhpho">
+    <string-array name="city">
         <item>TP.HCM</item>
         <item>Ha Noi</item>
         <item>Hai Phong</item>
@@ -18,12 +138,18 @@
         <item>An Giang</item>
         <item>Nha Trang</item>
     </string-array>
-    <string-array name="sanpham">
+    <string-array name="product">
         <item>Nón</item>
         <item>Giày</item>
         <item>Balo</item>
     </string-array>
-    <string-array name="nhomkhach">
+    <string-array name="sort">
+        <item>A-Z</item>
+        <item>Z-A</item>
+        <item>Cao - thấp</item>
+        <item>Thấp - cao</item>
+    </string-array>
+    <string-array name="group_customer">
         <item>Bình thường</item>
         <item>Quen</item>
         <item>V.I.P 1asdasdasdasdasd</item>
@@ -62,12 +188,7 @@
     <string name="navigation_about">Giới thiệu</string>
     <string name="navigation_help">Trợ giúp</string>
 
-    <string name="account">Tên đăng nhập</string>
-    <string name="password">Mật khẩu</string>
-    <string name="login">Đăng nhập</string>
-
-    <string name="forgot_password">Quên mật khẩu ?</string>
-
+    <!--<string name="account">Tên đăng nhập</string>-->
 
     <string name="name">Họ tên</string>
     <string name="user_login">Tên đăng nhập</string>
@@ -78,4 +199,37 @@
     <string name="tab_customer">Khách hàng</string>
     <string name="tab_product">Sản phẩm</string>
     <string name="tab_history">Lịch sử buôn bán</string>
+    <string name="icon">icon</string>
+    <string name="information_customer">Thông tin khách hàng</string>
+    <string name="name_customer">Tên khách hàng</string>
+    <string name="birthday_customer">Ngày sinh</string>
+    <string name="sex_customer">Giới tính :</string>
+    <string name="sex_male">Nam</string>
+    <string name="sex_female">Nữ</string>
+    <string name="sex_more">Khác</string>
+    <string name="group_customer">Nhóm khách</string>
+    <string name="information_contact">Thông tin liên lạc</string>
+    <string name="city">Thành phố :</string>
+    <string name="add_new_group">Thêm nhóm mới</string>
+    <string name="district">Quận / Huyện :</string>
+    <string name="address_number">Số nhà</string>
+    <string name="update">Cập nhật</string>
+    <string name="info_shop">Thông tin Shop</string>
+    <string name="create_shop_name">Tên Shop</string>
+    <string name="time_work">Thời gian làm việc</string>
+    <string name="specialize">Ngành làm việc</string>
+    <string name="food">Thực phẩm</string>
+    <string name="fashion">Thời trang</string>
+    <string name="technology">Công nghệ</string>
+    <string name="sport">Thể thao</string>
+    <string name="electronic">Điện tử</string>
+    <string name="study">Học tập</string>
+    <string name="specialize_more">Ngành khác</string>
+    <string name="shop_phone">Số điện thoại Shop</string>
+    <string name="address_shop">Số nhà</string>
+    <string name="create_info_shop">Thông tin liên lạc</string>
+    <string name="title_activity_customer_details">CustomerDetailsActivity</string>
+    <string name="title_activity_fragment_attach">FragmentAttachActivity</string>
+
 </resources>
+

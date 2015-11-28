@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="not_connected">Không có kết nối internet !</string>
+    <string name="message_re_connected">Xin vui lòng kiểm tra kết nối mạng</string>
+    <string name="connect_to_server">Đang kết nối tới Server &#8230;</string>
+
+    <string name="not_exist_account">Không có tài khoản người dùng trên thiết bị</string>
+    <string name="exist_account">Đã có tài khoản người dùng trên thiết bị</string>
+    <string name="not_exist_func">Chức năng này hiện tại chưa sử dụng được</string>
+
+    <string name="press_back_to_logout">Nhấn Back lần nữa để logout</string>
+    <string name="wrong_usename_or_passwd">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="not_login_facebook">Đăng nhập với Facebook thất bại, xin thử lại</string>
+    <string name="cancel_login_facebook">Đã hủy đăng nhập với Facebook</string>
+    <string name="please_try_again">Xin vui lòng thử lại !</string>
+    <string name="please_check_login_info">Xin vui lòng kiểm tra thông tin đăng nhập !</string>
+    <string name="please_check_register_info">Đăng ký thất bại</string>
+    <string name="invalid_reenter_passwd">Nhập lại mật khẩu để sử dụng</string>
+
+    <string name="invalid_input_username">Tên đăng nhập chỉ chứa chữ, số và dấu gạch dưới</string>
+    <string name="invalid_input_username_length">Tên đăng nhập từ 6&#8211;20 ký tự</string>
+    <string name="invalid_input_username_whitespace">Tên đăng nhập không chứa khoảng trắng</string>
+    <string name="invalid_input_username_empty">Tên đăng nhập là bắt buộc</string>
+    <string name="invalid_input_passwd_whitespace">Tên đăng nhập không chứa khoảng trắng</string>
+    <string name="invalid_input_passwd_empty">Mật khẩu là bắt buộc</string>
+    <string name="invalid_input_passwd_least_6_char">Mật khẩu có ít nhất 6 ký tự</string>
+    <string name="invalid_input_repasswd">Mật khẩu không khớp</string>
+    <string name="invalid_input_displayname_empty">Tên hiển thị là bắt buộc</string>
+    <string name="invalid_input_displayname">Tên hiển thị có ít nhất hai ký tự</string>
+    <string name="invalid_input_birthday">Vui lòng chọn ngày sinh</string>
+    <string name="invalid_input_email">Email không hợp lệ</string>
+    <string name="invalid_input_phone_number">Số điện thoại không hợp lệ</string>
+    <string name="invalid_input_address">Địa chỉ là bắt buộc</string>
+
+    <string name="successful_register">Đăng ký thành công</string>
+    <string name="not_successful_register">Vui lòng kiểm tra lại thông tin</string>
+
+    <string name="signing_in">Signing in</string>
+    <string name="contacts_permission_rationale">Contacts access is needed in order to retrieve your email address.</string>
+    <string name="error_null_person">
+        Error: Plus.PeopleApi.getCurrentPerson returned null. Ensure that the Google+ API is
+        enabled for your project, you have a properly configured google-services.json file
+        and that your device has an internet connection.
+    </string>
+    <string name="signed_in_err">"Error: please check logs."</string>
+</resources>

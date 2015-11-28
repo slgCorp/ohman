@@ -1,9 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_login"
     android:gravity="center"
+    android:background="@color/blue100"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -34,16 +35,16 @@
 
 
                 <EditText
+                    android:id="@+id/edtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:hint="@string/account"
+                    android:hint="@string/username"
                     android:maxLength="20"
                     android:textColorHint="@color/white" />
 
 
                 <EditText
-
-                    android:id="@+id/edLoginPass"
+                    android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
@@ -54,7 +55,7 @@
             </LinearLayout>
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_Login"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -64,14 +65,22 @@
                 android:textColor="@android:color/white" />
 
             <android.support.v7.widget.AppCompatButton
-
+                android:id="@+id/btnRegister"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:text="@string/sign_up"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnForgotPassword"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/forgot_password"
                 android:textColor="@android:color/white"
-                android:textSize="15dp" />
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,17 +93,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="Roboto-Medium.ttf"
-                    android:text="Đăng nhập với : "
+                    android:text="@string/login_with"
                     android:textColor="@android:color/white"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnLoginWithGooglePlus"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/ic_google" />
 
                 <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnLoginWithFacebook"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginLeft="20dp"
@@ -106,4 +117,4 @@
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</FrameLayout>
