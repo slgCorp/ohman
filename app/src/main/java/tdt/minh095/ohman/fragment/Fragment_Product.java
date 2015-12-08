@@ -1,5 +1,6 @@
 package tdt.minh095.ohman.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import com.etiennelawlor.quickreturn.library.listeners.QuickReturnRecyclerViewOn
 import java.lang.reflect.Field;
 
 import tdt.minh095.ohman.R;
+import tdt.minh095.ohman.activity.NewProductActivity;
 import tdt.minh095.ohman.adapter.ProductAdapter;
 import tdt.minh095.ohman.view.DividerItemDecoration;
 
@@ -36,6 +38,15 @@ public class Fragment_Product extends Fragment {
         recyclerViewProduct = (RecyclerView) rootView.findViewById(R.id.list_product);
         footerProduct = (FrameLayout) rootView.findViewById(R.id.footer_product);
         setUpRecyclerViewProduct();
+
+        rootView.findViewById(R.id.btnAddNew).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), NewProductActivity.class));
+            }
+        });
+
         return rootView;
     }
 

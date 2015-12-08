@@ -8,8 +8,6 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.ogaclejapan.smarttablayout/utils-v4/1.4.2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ogaclejapan.smarttablayout/utils-v4/1.4.2/9fd9ef8999b951f71d0b3955722a1208c40ef959/utils-v4-1.4.2-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
