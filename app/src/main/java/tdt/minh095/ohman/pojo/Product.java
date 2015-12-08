@@ -22,9 +22,9 @@ public class Product extends Model {
     @Column(name = "Description")
     private String Description;
     @Column(name = "LikeCount")
-    private String likeCount;
+    private int likeCount;
     @Column(name = "CommentCount")
-    private String commentCount;
+    private int commentCount;
     @Column(name = "Note")
     private String note;
     @Column(name = "Status")
@@ -99,19 +99,19 @@ public class Product extends Model {
         Description = description;
     }
 
-    public String getLikeCount() {
+    public int getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(String likeCount) {
+    public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
     }
 
-    public String getCommentCount() {
+    public int getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(String commentCount) {
+    public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
     }
 

@@ -32,6 +32,7 @@ import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.helper.IntegerHelper;
 import tdt.minh095.ohman.helper.StringHelper;
 import tdt.minh095.ohman.pojo.Image;
+import tdt.minh095.ohman.pojo.Product;
 import tdt.minh095.ohman.pojo.ProductDetail;
 
 
@@ -195,6 +196,12 @@ public class ProductDetailFragment extends Fragment
             case R.id.menu_save:
                 if (validateInput()) {
                     // TODO: ready to insert new product
+                    Product p = new Product();
+                    p.setProductName(productDetail.getProductName());
+                    p.setDescription(productDetail.getProductDescription());
+                    p.setUnit(productDetail.getProductUnit());
+                    long id = p.save();
+                    Log.d("myDebug", id + "");
                 }
                 break;
         }
