@@ -200,8 +200,9 @@ public class ProductDetailFragment extends Fragment
                     p.setProductName(productDetail.getProductName());
                     p.setDescription(productDetail.getProductDescription());
                     p.setUnit(productDetail.getProductUnit());
-                    long id = p.save();
-                    Log.d("myDebug", id + "");
+                    p.save();
+                    getActivity().setResult(getActivity().RESULT_OK);
+                    getActivity().finish();
                 }
                 break;
         }

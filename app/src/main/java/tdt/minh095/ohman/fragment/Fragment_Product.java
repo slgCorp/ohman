@@ -4,38 +4,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.etiennelawlor.quickreturn.library.enums.QuickReturnViewType;
 import com.etiennelawlor.quickreturn.library.listeners.QuickReturnRecyclerViewOnScrollListener;
 
-import java.lang.reflect.Field;
-
 import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.activity.NewProductActivity;
 import tdt.minh095.ohman.adapter.ProductAdapter;
-import tdt.minh095.ohman.view.DividerItemDecoration;
+import tdt.minh095.ohman.helper.Constant;
+import tdt.minh095.ohman.pojo.Product;
 
 
 /**
  * Created by MyPC on 02/10/2015.
  */
 public class Fragment_Product extends Fragment {
-    RecyclerView recyclerViewProduct;
-    FrameLayout footerProduct;
+
+    private RecyclerView rvProduct;
+    private FrameLayout footerProduct;
+
+    private ProductAdapter mAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_product, container, false);
-        recyclerViewProduct = (RecyclerView) rootView.findViewById(R.id.list_product);
+        rvProduct = (RecyclerView) rootView.findViewById(R.id.list_product);
         footerProduct = (FrameLayout) rootView.findViewById(R.id.footer_product);
         setUpRecyclerViewProduct();
 
@@ -43,7 +43,8 @@ public class Fragment_Product extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), NewProductActivity.class));
+                Intent intent = new Intent(getActivity(), NewProductActivity.class);
+                startActivityForResult(intent, Constant.RequestCode.PRODUCT_DETAILS);
             }
         });
 
@@ -51,10 +52,11 @@ public class Fragment_Product extends Fragment {
     }
 
     public void setUpRecyclerViewProduct() {
-        recyclerViewProduct.setHasFixedSize(true);
+        rvProduct.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerViewProduct.setLayoutManager(layoutManager);
-        recyclerViewProduct.setAdapter(new ProductAdapter());
+        rvProduct.setLayoutManager(layoutManager);
+        mAdapter = new ProductAdapter(this.getContext(), Product.getAllActive());
+        rvProduct.setAdapter(mAdapter);
         int headerHeight = getActivity().getResources().getDimensionPixelSize(R.dimen.footer_customer);
         QuickReturnRecyclerViewOnScrollListener scrollListener;
 
@@ -63,8 +65,16 @@ public class Fragment_Product extends Fragment {
                 .minFooterTranslation(headerHeight)
                 .isSnappable(true)
                 .build();
-        recyclerViewProduct.setOnScrollListener(scrollListener);
+        rvProduct.setOnScrollListener(scrollListener);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constant.RequestCode.PRODUCT_DETAILS && resultCode == getActivity().RESULT_OK){
 
+            //TODO notify
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

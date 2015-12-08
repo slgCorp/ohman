@@ -3,6 +3,9 @@ package tdt.minh095.ohman.pojo;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
 
 @Table(name = "T02_Product", id = "_id")
 public class Product extends Model {
@@ -37,6 +40,16 @@ public class Product extends Model {
     private long lastUpdatedBy;
     @Column(name = "LastUpdatedDateTime")
     private String lastUpdatedDateTime;
+
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
     public Product() {
         super();
@@ -161,5 +174,20 @@ public class Product extends Model {
 
     public void setLastUpdatedDateTime(String lastUpdatedDateTime) {
         this.lastUpdatedDateTime = lastUpdatedDateTime;
+    }
+
+    public static List<Product> getAll() {
+        return new Select()
+                .from(Product.class)
+                .orderBy("ProductName ASC")
+                .execute();
+    }
+
+    public static List<Product> getAllActive() {
+        return new Select()
+                .from(Product.class)
+                .where("Status = ?", 1)
+                .orderBy("ProductName ASC")
+                .execute();
     }
 }

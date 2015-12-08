@@ -37,5 +37,9 @@ public class Constant {
         public static final int IS_DELETING = 3000;
     }
 
+    public static final class RequestCode{
+
+        public static final int PRODUCT_DETAILS = 10000;
+    }
 
 }
