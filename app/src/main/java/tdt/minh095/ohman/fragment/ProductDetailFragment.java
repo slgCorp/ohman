@@ -1,5 +1,6 @@
 package tdt.minh095.ohman.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ import tdt.minh095.ohman.helper.StringHelper;
 import tdt.minh095.ohman.pojo.Image;
 import tdt.minh095.ohman.pojo.Product;
 import tdt.minh095.ohman.pojo.ProductDetail;
+import tdt.minh095.ohman.pojo.ProductPicture;
 
 
 public class ProductDetailFragment extends Fragment
@@ -200,8 +202,17 @@ public class ProductDetailFragment extends Fragment
                     p.setProductName(productDetail.getProductName());
                     p.setDescription(productDetail.getProductDescription());
                     p.setUnit(productDetail.getProductUnit());
-                    p.save();
-                    getActivity().setResult(getActivity().RESULT_OK);
+                    long productId = p.save();
+                    for (Image image : imageSelected) {
+
+                        ProductPicture pp = new ProductPicture();
+                        pp.setProductID(productId);
+                        pp.setLocalLink(image.getImagePath());
+                        pp.setDescription(image.getDescription());
+                        pp.setPosition(image.getOrder());
+                        pp.save();
+                    }
+                    getActivity().setResult(Activity.RESULT_OK);
                     getActivity().finish();
                 }
                 break;

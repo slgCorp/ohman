@@ -190,4 +190,17 @@ public class Product extends Model {
                 .orderBy("ProductName ASC")
                 .execute();
     }
+
+    public static String getAvatarLocalLink(long productId) {
+
+        try {
+            ProductPicture pp = new Select()
+                    .from(ProductPicture.class)
+                    .where("ProductID = ? and Position = ?", productId, 1)
+                    .executeSingle();
+            return pp.getLocalLink();
+        }catch (Exception e){
+            return "";
+        }
+    }
 }

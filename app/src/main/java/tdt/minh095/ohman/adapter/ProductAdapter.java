@@ -11,12 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.List;
 
 import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.fragment.Fragment_Customer;
+import tdt.minh095.ohman.helper.DisplayUtils;
 import tdt.minh095.ohman.helper.ValidationHelper;
 import tdt.minh095.ohman.pojo.Customer;
 import tdt.minh095.ohman.pojo.Product;
@@ -56,7 +61,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
         Product item = model.get(position);
-
+        String avatarLocalLink = Product.getAvatarLocalLink(item.getId());
+        if(!avatarLocalLink.equals("")){
+            Picasso.with(context)
+                    .load(new File(avatarLocalLink))
+                    .resize((DisplayUtils.getScreenWidth(context) - DisplayUtils.dpToPixel(context, 16)) / 3,
+                            (DisplayUtils.getScreenWidth(context) - DisplayUtils.dpToPixel(context, 16)) / 3)
+                    .centerCrop()
+                    .into(viewHolder.imgvAvatar);
+        }
         viewHolder.tvName.setText(item.getProductName());
         viewHolder.tvDescription.setText(viewHolder.tvDescription.getText() + " " + item.getDescription());
 
@@ -67,6 +80,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         View rootView;
 
+        ImageView imgvAvatar;
         TextView tvName;
         TextView tvDescription;
         TextView tvAmount;
@@ -78,10 +92,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
             rootView = v.findViewById(R.id.rootView);
 
+            imgvAvatar = (ImageView) v.findViewById(R.id.imgvAvatar);
             tvName = (TextView) v.findViewById(R.id.tvName);
             tvDescription = (TextView) v.findViewById(R.id.tvDescription);
             tvAmount = (TextView) v.findViewById(R.id.tvAmount);
             tvPrice = (TextView) v.findViewById(R.id.tvPrice);
+
             chkSelect = (CheckBox) v.findViewById(R.id.chkSelect);
 
             rootView.setOnClickListener(this);

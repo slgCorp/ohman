@@ -20,8 +20,8 @@ public class ProductPicture extends Model {
     private String serverLink;
     @Column(name = "Description")
     private String description;
-    @Column(name = "Postion")
-    private int postion;
+    @Column(name = "Position")
+    private int position;
     @Column(name = "IsCover")
     private boolean isCover;
     @Column(name = "Status")
@@ -40,12 +40,12 @@ public class ProductPicture extends Model {
         this.status = true;
     }
 
-    public int getPostion() {
-        return postion;
+    public int getPosition() {
+        return position;
     }
 
-    public void setPostion(int postion) {
-        this.postion = postion;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public long getUserID() {
