@@ -50,7 +50,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/view2"
                 android:layout_gravity="right|center_vertical"
-                android:layout_margin="4dp" />
+                android:padding="10dp" />
         </FrameLayout>
 
         <LinearLayout

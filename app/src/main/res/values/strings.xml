@@ -230,8 +230,11 @@
     <string name="create_info_shop">Thông tin liên lạc</string>
     <string name="title_activity_customer_details">CustomerDetailsActivity</string>
     <string name="title_activity_fragment_attach">FragmentAttachActivity</string>
+
     <string name="default_cancel">Hủy</string>
     <string name="default_save">Lưu</string>
+    <string name="lowcase_delete_product">Xóa Sản Phẩm</string>
+    <string name="snackbar_delete_product_successful">Xóa Sản Phẩm thành công</string>
 
 </resources>
 

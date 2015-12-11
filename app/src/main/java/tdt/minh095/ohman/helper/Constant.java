@@ -42,4 +42,7 @@ public class Constant {
         public static final int PRODUCT_DETAILS = 10000;
     }
 
+    public static final String URL_TAG = "URL_TAG";
+
+    public static final String ID = "ID";
 }

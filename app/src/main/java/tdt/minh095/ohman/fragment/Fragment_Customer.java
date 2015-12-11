@@ -63,14 +63,7 @@ public class Fragment_Customer extends Fragment implements View.OnClickListener 
 
         btnDeleteSelected.setVisibility(View.GONE);
 
-        btnAddNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startCustomerDetailsActivity(-1);
-            }
-        });
-
+        btnAddNew.setOnClickListener(this);
         btnDeleteSelected.setOnClickListener(this);
     }
 
@@ -173,7 +166,11 @@ public class Fragment_Customer extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
 
         switch (v.getId()){
+            case R.id.btnAddNew:
 
+                startCustomerDetailsActivity(-1);
+
+                break;
             case R.id.btnDeleteSelected:
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());

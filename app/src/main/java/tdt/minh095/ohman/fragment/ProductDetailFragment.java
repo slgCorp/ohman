@@ -30,6 +30,7 @@ import java.util.Comparator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import tdt.minh095.ohman.R;
+import tdt.minh095.ohman.helper.Constant;
 import tdt.minh095.ohman.helper.IntegerHelper;
 import tdt.minh095.ohman.helper.StringHelper;
 import tdt.minh095.ohman.pojo.Image;
@@ -84,11 +85,12 @@ public class ProductDetailFragment extends Fragment
     public ProductDetailFragment() {
     }
 
-    public static ProductDetailFragment newInstance(ArrayList<Image> imageSelected, ProductDetail productDetail) {
+    public static ProductDetailFragment newInstance(long _id, ArrayList<Image> imageSelected, ProductDetail productDetail) {
         ProductDetailFragment productDetailFragment = new ProductDetailFragment();
         Bundle args = new Bundle();
         args.putSerializable("ImageSelected", imageSelected);
         args.putSerializable("ProductDetail", productDetail);
+        args.putLong(Constant.ID, _id);
         productDetailFragment.setArguments(args);
         return productDetailFragment;
     }
@@ -197,21 +199,47 @@ public class ProductDetailFragment extends Fragment
         switch (item.getItemId()) {
             case R.id.menu_save:
                 if (validateInput()) {
-                    // TODO: ready to insert new product
-                    Product p = new Product();
-                    p.setProductName(productDetail.getProductName());
-                    p.setDescription(productDetail.getProductDescription());
-                    p.setUnit(productDetail.getProductUnit());
-                    long productId = p.save();
-                    for (Image image : imageSelected) {
 
-                        ProductPicture pp = new ProductPicture();
-                        pp.setProductID(productId);
-                        pp.setLocalLink(image.getImagePath());
-                        pp.setDescription(image.getDescription());
-                        pp.setPosition(image.getOrder());
-                        pp.save();
+                    //TODO STATEMENT
+                    long _id = getArguments().getLong(Constant.ID, -1);
+                    if (_id == -1) {
+
+                        Product p = new Product();
+                        p.setProductName(productDetail.getProductName());
+                        p.setDescription(productDetail.getProductDescription());
+                        p.setUnit(productDetail.getProductUnit());
+                        long productId = p.save();
+
+                        for (Image image : imageSelected) {
+
+                            ProductPicture pp = new ProductPicture();
+                            pp.setProductID(productId);
+                            pp.setLocalLink(image.getImagePath());
+                            pp.setDescription(image.getDescription());
+                            pp.setPosition(image.getOrder());
+                            pp.save();
+                        }
+
+                    } else {
+
+                        Product p = Product.getProductById(_id);
+                        p.setProductName(productDetail.getProductName());
+                        p.setDescription(productDetail.getProductDescription());
+                        p.setUnit(productDetail.getProductUnit());
+                        long productId = p.save();
+
+                        Product.deleteProductPictures(_id);
+                        for (Image image : imageSelected) {
+
+                            ProductPicture pp = new ProductPicture();
+                            pp.setProductID(productId);
+                            pp.setLocalLink(image.getImagePath());
+                            pp.setDescription(image.getDescription());
+                            pp.setPosition(image.getOrder());
+                            pp.save();
+                        }
                     }
+
                     getActivity().setResult(Activity.RESULT_OK);
                     getActivity().finish();
                 }

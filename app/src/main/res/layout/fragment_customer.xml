@@ -47,7 +47,7 @@
             android:layout_width="@dimen/footer_button_size"
             android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="@dimen/footer_button_margin"
+            android:padding="@dimen/footer_button_margin"
             android:background="@drawable/ic_delete_white_32"
             android:gravity="right" />
 
@@ -56,7 +56,7 @@
             android:layout_width="@dimen/footer_button_size"
             android:layout_height="@dimen/footer_button_size"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/footer_button_margin"
+            android:padding="@dimen/footer_button_margin"
             android:background="@drawable/ic_plus_white_32"
             android:gravity="left" />
     </FrameLayout>

@@ -15,6 +15,13 @@ public class Image implements Serializable {
         this.selected = false;
     }
 
+    public Image(String imagePath, String description, int order) {
+        this.imagePath = imagePath;
+        this.description = description;
+        this.order = order;
+        this.selected = true;
+    }
+
     public String getImagePath() {
         return imagePath;
     }

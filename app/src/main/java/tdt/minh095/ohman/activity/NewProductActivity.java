@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import tdt.minh095.ohman.fragment.GalleryFragment;
 import tdt.minh095.ohman.fragment.ProductAlbumFragment;
 import tdt.minh095.ohman.fragment.ProductDetailFragment;
+import tdt.minh095.ohman.helper.Constant;
 import tdt.minh095.ohman.pojo.Image;
+import tdt.minh095.ohman.pojo.Product;
 import tdt.minh095.ohman.pojo.ProductDetail;
+import tdt.minh095.ohman.pojo.ProductPicture;
 
 
 public class NewProductActivity extends FragmentActivity
@@ -24,6 +27,8 @@ public class NewProductActivity extends FragmentActivity
     private ProductDetail productDetail;
     private ArrayList<Image> imageSelected;
 
+    private long _id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +40,32 @@ public class NewProductActivity extends FragmentActivity
         }
 
         // Display product detail form
-        ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-        mFragmentManager.beginTransaction()
-                .add(CONTAINER, productDetailFragment, "ProductDetailFragment")
-                .commit();
+        _id = getIntent().getLongExtra(Constant.ID, -1);
+        if (_id == -1) {
+
+            ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+            mFragmentManager.beginTransaction()
+                    .add(CONTAINER, productDetailFragment, "ProductDetailFragment")
+                    .commit();
+        } else {
+
+            Product p = Product.getProductById(_id);
+            productDetail = new ProductDetail();
+            productDetail.setProductName(p.getProductName());
+            productDetail.setProductUnit(p.getUnit());
+            productDetail.setProductDescription(p.getDescription());
+
+            imageSelected = new ArrayList<>();
+            for (ProductPicture pp : Product.getProductPictures(_id)) {
+                imageSelected.add(new Image(pp.getLocalLink(), pp.getDescription(), pp.getPosition()));
+            }
+
+            ProductDetailFragment productDetailFragment = ProductDetailFragment.newInstance(_id, imageSelected, productDetail);
+            mFragmentManager.beginTransaction()
+                    .replace(CONTAINER, productDetailFragment, "ProductDetailFragment")
+                    .commit();
+        }
+
     }
 
     @Override
@@ -73,7 +100,7 @@ public class NewProductActivity extends FragmentActivity
     public void loadImagesSelected(ArrayList<Image> imageSelected) {
         this.imageSelected = imageSelected;
         mFragmentManager.popBackStack();
-        ProductDetailFragment productDetailFragment = ProductDetailFragment.newInstance(imageSelected, productDetail);
+        ProductDetailFragment productDetailFragment = ProductDetailFragment.newInstance(_id, imageSelected, productDetail);
         mFragmentManager.beginTransaction()
                 .replace(CONTAINER, productDetailFragment, "ProductDetailFragment")
                 .commit();
@@ -88,7 +115,7 @@ public class NewProductActivity extends FragmentActivity
     @Override
     public void onMenuDoneClicked(ArrayList<Image> images) {
         mFragmentManager.popBackStack();
-        ProductDetailFragment productDetailFragment = ProductDetailFragment.newInstance(images, productDetail);
+        ProductDetailFragment productDetailFragment = ProductDetailFragment.newInstance(_id, images, productDetail);
         mFragmentManager.beginTransaction()
                 .replace(CONTAINER, productDetailFragment, "ProductDetailFragment")
                 .commit();

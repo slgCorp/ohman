@@ -3,24 +3,39 @@ package tdt.minh095.ohman.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import tdt.minh095.ohman.R;
 import tdt.minh095.ohman.fragment.Fragment_Customer;
+import tdt.minh095.ohman.fragment.Fragment_Product;
+import tdt.minh095.ohman.helper.Constant;
 import tdt.minh095.ohman.helper.DisplayUtils;
 import tdt.minh095.ohman.helper.ValidationHelper;
 import tdt.minh095.ohman.pojo.Customer;
@@ -34,10 +49,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public List<Product> model;
     private Context context;
+    private Fragment contextFragment;
 
-    public ProductAdapter(Context context, List<Product> model) {
+    public ProductAdapter(Fragment contextFragment, List<Product> model) {
         this.model = model;
-        this.context = context;
+        this.contextFragment = contextFragment;
+        this.context = contextFragment.getContext();
     }
 
     public void setModel(List<Product> model) {
@@ -58,20 +75,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int position) {
 
         Product item = model.get(position);
         String avatarLocalLink = Product.getAvatarLocalLink(item.getId());
         if(!avatarLocalLink.equals("")){
+//            LoadImageAsyncTask asyncTask = new LoadImageAsyncTask(context, avatarLocalLink);
+//            asyncTask.execute(viewHolder.imgvAvatar);
             Picasso.with(context)
                     .load(new File(avatarLocalLink))
                     .resize((DisplayUtils.getScreenWidth(context) - DisplayUtils.dpToPixel(context, 16)) / 3,
                             (DisplayUtils.getScreenWidth(context) - DisplayUtils.dpToPixel(context, 16)) / 3)
                     .centerCrop()
-                    .into(viewHolder.imgvAvatar);
+                    .into(viewHolder.imgvAvatar, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            viewHolder.progressBar.setVisibility(View.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
         }
         viewHolder.tvName.setText(item.getProductName());
-        viewHolder.tvDescription.setText(viewHolder.tvDescription.getText() + " " + item.getDescription());
+        viewHolder.tvDescription.setText(item.getDescription());
 
         viewHolder.chkSelect.setChecked(item.isChecked());
     }
@@ -80,6 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         View rootView;
 
+        ProgressBar progressBar;
         ImageView imgvAvatar;
         TextView tvName;
         TextView tvDescription;
@@ -92,6 +122,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
             rootView = v.findViewById(R.id.rootView);
 
+            progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
             imgvAvatar = (ImageView) v.findViewById(R.id.imgvAvatar);
             tvName = (TextView) v.findViewById(R.id.tvName);
             tvDescription = (TextView) v.findViewById(R.id.tvDescription);
@@ -108,8 +139,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         @Override
         public void onClick(View v) {
 
-//            Customer c = customers.get(getAdapterPosition());
-//
+            Product item = model.get(getAdapterPosition());
+
+            ((Fragment_Product)contextFragment).startProductDetailsActivity(item.getId());
 //            switch (v.getId()) {
 //
 //                case R.id.cardView:
@@ -137,27 +169,27 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-//            Customer c = customers.get(getAdapterPosition());
-//
-//            c.setChecked(isChecked);
-////            notifyDataSetChanged();
-//
-//            int chkCount = 0;
-//            for (int i = 0; i < customers.size(); i++) {
-//
-//                if (customers.get(i).isChecked()) {
-//                    chkCount++;
-//                }
-//            }
-//
-//            if (chkCount == 0) {
-//
-//                fragment_customer.btnDeleteSelected.setVisibility(View.GONE);
-//
-//            } else {
-//
-//                fragment_customer.btnDeleteSelected.setVisibility(View.VISIBLE);
-//            }
+            Product item = model.get(getAdapterPosition());
+
+            item.setChecked(isChecked);
+//            notifyDataSetChanged();
+
+            int chkCount = 0;
+            for (int i = 0; i < model.size(); i++) {
+
+                if (model.get(i).isChecked()) {
+                    chkCount++;
+                }
+            }
+
+            if (chkCount == 0) {
+
+                ((Fragment_Product)contextFragment).btnDeleteSelected.setVisibility(View.GONE);
+
+            } else {
+
+                ((Fragment_Product)contextFragment).btnDeleteSelected.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

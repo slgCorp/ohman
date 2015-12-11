@@ -3,6 +3,7 @@ package tdt.minh095.ohman.pojo;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 import java.util.List;
@@ -191,6 +192,14 @@ public class Product extends Model {
                 .execute();
     }
 
+    public static Product getProductById(long _id) {
+
+        return new Select()
+                .from(Product.class)
+                .where("_id = ?", _id)
+                .executeSingle();
+    }
+
     public static String getAvatarLocalLink(long productId) {
 
         try {
@@ -199,8 +208,24 @@ public class Product extends Model {
                     .where("ProductID = ? and Position = ?", productId, 1)
                     .executeSingle();
             return pp.getLocalLink();
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
+    }
+
+    public static List<ProductPicture> getProductPictures(long productId) {
+
+        return new Select()
+                .from(ProductPicture.class)
+                .where("ProductID = ?", productId)
+                .execute();
+    }
+
+    public static void deleteProductPictures(long productId) {
+
+        new Delete()
+                .from(ProductPicture.class)
+                .where("ProductID = ?", productId)
+                .execute();
     }
 }
