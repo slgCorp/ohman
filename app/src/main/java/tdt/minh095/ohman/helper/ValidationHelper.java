@@ -6,16 +6,14 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -285,11 +283,19 @@ public class ValidationHelper {
         dpkBirthday.setMaxDate(new Date().getTime());
 
         if (!editText.getText().toString().equals("")) {
-            StringTokenizer tokenizer = new StringTokenizer(editText.getText().toString(), "-");
-            int day = Integer.parseInt(tokenizer.nextToken());
-            int month = Integer.parseInt(tokenizer.nextToken()) - 1;
-            int year = Integer.parseInt(tokenizer.nextToken());
-            dpkBirthday.updateDate(year, month, day);
+
+            try {
+                Date birthDay = new SimpleDateFormat(Constant.DATE_FORMAT_VIETNAM).parse(editText.getText().toString());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(birthDay);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+                dpkBirthday.updateDate(year, month, day);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         } else {
             dpkBirthday.updateDate(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         }
